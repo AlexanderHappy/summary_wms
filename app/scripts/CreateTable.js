@@ -1,9 +1,6 @@
 export { CreateTable };
 
-class CreateTable
-{ 
-  // Скоректировать Класс в сторону большей читаемости
-
+class CreateTable { 
   pagination = document.querySelector('#pagination');
   table = document.querySelector('#myTable');
   tbody = this.table.createTBody();
@@ -12,12 +9,11 @@ class CreateTable
   constructor(rowNumber, json_data) {
     this.rowNumber = rowNumber;
     this.json_data = json_data;
-
     this.usersLength = json_data.length;
     this.numbersPages = Math.ceil(this.usersLength / this.rowNumber);
   }
   
-  renderPagination() {
+  #renderPagination() {
     for (let pageNum = 1; pageNum <= this.numbersPages; pageNum++) {
       let li = document.createElement('li');
       li.innerHTML = pageNum;
@@ -26,18 +22,16 @@ class CreateTable
     }
     
     // Отрисовка первой части данных из БД при открытие страницы.
-    this.renderTBody(this.liObjects[0]);
+    this.#renderTBody(this.liObjects[0]);
 
     this.liObjects.forEach((liObject) => {
       liObject.addEventListener('click', () => {
-        this.renderTBody(liObject);
+        this.#renderTBody(liObject);
       });
     });
-
-    return this;
   }
 
-  renderTHead() {
+  #renderTHead() {
     let trTHead = this.table.createTHead().insertRow();
     let namesOfColums = Object.keys(this.json_data[0]);
 
@@ -46,10 +40,9 @@ class CreateTable
       th.innerHTML = name;
       trTHead.appendChild(th);
     }
-    return this;
   }
 
-  renderTBody(liObject) {
+  #renderTBody(liObject) {
     const pageNum = +liObject.innerHTML;
 
     const start = (pageNum - 1) * this.rowNumber;
@@ -66,5 +59,11 @@ class CreateTable
         tr.appendChild(td);
       }
     }
+  }
+
+  renderTable() {
+    this.#renderTHead();
+    this.#renderPagination();
+    this.#renderTBody();
   }
 }
