@@ -1,0 +1,35 @@
+.header {
+  position: fixed;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, .75);
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  height: 66px;
+  z-index: 100;
+}
+div.sidebar-header {
+  position: fixed;
+  background-color: rgb(0, 192, 239);
+  left: 0px;
+  top: 0px;
+  height: 66px;
+  width: 260px;
+}
+div.sidebar-header div.header-logo {
+  display: grid;
+  grid-template-columns: 66px 1fr;
+  grid-template-rows: 66px;
+  align-items: center;
+}
+div.sidebar-header div.header-logo img {
+  object-fit: contain;
+  height: 55%;
+  width: 100%;
+}
+div.sidebar-header div.header-logo .logo-name {
+  color: white;
+  font-family: Roboto, Arial;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 4px;
+}

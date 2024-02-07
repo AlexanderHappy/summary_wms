@@ -4,16 +4,16 @@ $title = 'Goods';
 ?>
 
 <table id="myTable">
-  <!-- Таблица нарисованная JS-ом -->
+  <!-- Таблица отрендеринная JS-ом -->
 </table>
 <ul id="pagination">
-  <!-- Пагинация нарисованная JS-ом -->
+  <!-- Пагинация отрендеринная JS-ом -->
 </ul>
 
 <?php $json = json_encode($goods); ?>
 
 <script type="module">
-  import { CreateTable } from '/record_wms/app/scripts/CreateTable.js';
+  import { CreateTable } from '/record_wms/app/js/Classes/CreateTable.js';
   let goods = <?=$json?>;
 
   let table = new CreateTable(5, goods).renderTable();

@@ -8,8 +8,7 @@ spl_autoload_register(function($class) {
     require_once $class_path;
     return;
   }
-
-  throw new Exception("Autoload doesn't work properly with $class_path");
+  throw new Exception("Something goes wrong with $class_path");
 });
 
 ?>

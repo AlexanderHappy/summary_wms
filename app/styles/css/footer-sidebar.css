@@ -1,0 +1,46 @@
+body div.sidebar-footer-grid {
+  position: fixed;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: rgb(33, 41, 46);
+  left: 0px;
+  bottom: 0px;
+  width: 260px;
+  height: 44px;
+  align-items: center;
+  text-align: center;
+}
+body div.sidebar-footer-grid a {
+  text-decoration: none;
+  color: rgb(155, 155, 155);
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+body div.sidebar-footer-grid a:hover {
+  background-color: #1e2427;
+}
+
+footer {
+  position: fixed;
+  left: 260px;
+  right: 0px;
+  bottom: 0px;
+  height: 44px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, .75);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer span {
+  font-family: Roboto, Arial;
+  color: rgb(118, 131, 143);
+}
+.site-footer-left .span-footer-left {
+  margin-left: 35px;
+  font-size: 14px;
+}
+.site-footer-right .span-footer-right {
+  margin-right: 35px;
+  font-size: 10px;
+}

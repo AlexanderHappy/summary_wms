@@ -11,7 +11,7 @@ class GoodsModel
   public function __construct()
   {
     $this->db = Database::getInstance()->getConnection();
-    
+
     try {
       $this->db->query("SELECT 1 FROM `goods`");
     } catch (\PDOException $exp) {
@@ -21,7 +21,7 @@ class GoodsModel
 
   private function createTable()
   {
-    $goodsCreateTableQuery = "CREATE TABLE IF NOT EXISTS `goods` (
+    $goodsTableCreateQuery = "CREATE TABLE IF NOT EXISTS `goods` (
       `id` INT NOT NULL AUTO_INCREMENT,
       `name` VARCHAR(255) DEFAULT 'Not Indicated',
       `brand` VARCHAR(255) DEFAULT 'Not Indicated',
@@ -32,9 +32,8 @@ class GoodsModel
     )";
 
     try {
-      $this->db->exec($goodsCreateTableQuery);
+      $this->db->exec($goodsTableCreateQuery);
     } catch (\PDOException $exp) {
-      echo "Failed to create table - $exp";
       return;
     }
   }
@@ -44,13 +43,12 @@ class GoodsModel
     try {
       $stmt = $this->db->query("SELECT * FROM `goods`");
 
-      $goods = Array();
+      $goods = [];
       while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
         array_push($goods, $row);
       }
       return $goods;
-    } catch (\PDOException $exp) {
-      echo "Failure to readAll - $exp";
+    } catch (\PDOException) {
       return;
     }
   }

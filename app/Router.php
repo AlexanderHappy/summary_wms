@@ -2,7 +2,7 @@
 
 namespace app;
 
-class Router
+class Router 
 {
   private $routes = [
     '/^\/' . APP_BASE_PATH . '\/?$/' => ['controller' => 'home\\HomeController', 'action' => 'index'],
@@ -24,14 +24,14 @@ class Router
 
     if (!$controller) {
       http_response_code(404);
-      echo "Controller doesn't work $controller";
+      echo "Something goes wrong with - $controller";
       return;
     }
 
     $controllerInstance = new $controller();
     if (!method_exists($controllerInstance, $action)) {
       http_response_code(404);
-      echo "Method $action of class $controllerInstance doesn't work";
+      echo "Something goes wrong with $controller";
       return;
     }
 

@@ -13,13 +13,13 @@ class Database
     $db_name = DB_NAME;
     $db_user = DB_USER;
     $db_pass = DB_PASS;
-    
+
     try {
       $dsn = "mysql:dbhost=$db_host;dbname=$db_name";
       $this->conn = new \PDO($dsn, $db_user, $db_pass);
       $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     } catch (\PDOException $exp) {
-      echo 'Connect failed: ' . $exp->getMessage();
+      echo "Connect failed with PDO - $exp";
     }
   }
 
