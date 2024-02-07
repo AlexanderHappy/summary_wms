@@ -13,9 +13,10 @@ $title = 'Goods';
 <?php $json = json_encode($goods); ?>
 
 <script type="module">
-  import { createTable } from '/record_wms/app/scripts/build-table.js';
+  import { CreateTable } from '/record_wms/app/scripts/table-oop.js';
   let goods = <?=$json?>;
-  createTable(goods);
+
+  let table = new CreateTable(5, goods).renderPagination().renderTHead();
 </script>
 
 <?php
