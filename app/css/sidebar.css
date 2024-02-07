@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body div.sidebar {
+  position: fixed;
+  background-color: rgb(13, 28, 62);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, .75);
+  left: 0px;
+  top:66px;
+  bottom: 44px;
+  width: 260px;
+}
+body ul.sidebar-listmenu {
+  list-style-type: none;
+  color: white;
+  font-family: Roboto;
+  padding-left: 0px;
+}
+
+/* Список в сайдбаре - верхняя граница */
+ul.sidebar-listmenu li.main-menu-row {
+  padding-left: 38px;
+  color: rgb(118, 131, 143);
+  font-size: 15px;
+  line-height: 46px;
+}
+ul.sidebar-listmenu li.item > a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding-left: 40px;
+  line-height: 46px;
+}
+ul.sidebar-listmenu li.item > a:hover, 
+.item-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  opacity: .8;
+  cursor: pointer;
+
+}
+body ul.sidebar-listmenu li i {
+  margin-right: 16px;
+}
+
+a.collapsible .fa-angle-right {
+  position: absolute;
+  right: 0px;
+  margin-top: 14px;
+
+  /* Поворот стрелки при нажатии */
+  transition: transform 0.2s;  
+}
+.collapsible.active .fa-angle-right {
+  transform: rotate(90deg);
+}
+  /* Поворот стрелки при нажатии */
+
+
+/* Collapsible-menu */
+  .collapsible.active {
+    background-color: rgb(36, 47, 53);
+  }
+  .content {
+    font-size: 14px;
+
+    list-style-type: none;
+    padding-left: 0px;
+
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: rgb(36, 47, 53);
+  }
+  .item-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding-left: 40px;
+    line-height: 40px;
+  }
+/* Collapsible-menu */
+
+/* Список в сайдбаре */
+
+body div.header {
+  position: fixed;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, .75);
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  height: 66px;
+}
+body div.sidebar-header {
+  position: fixed;
+  background-color: rgb(0, 192, 239);
+  left: 0px;
+  top: 0px;
+  height: 66px;
+  width: 260px;
+}
+body div.sidebar-footer-grid {
+  position: fixed;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: rgb(33, 41, 46);
+  left: 0px;
+  bottom: 0px;
+  width: 260px;
+  height: 44px;
+  align-items: center;
+  text-align: center;
+}
+body div.sidebar-footer-grid a {
+  text-decoration: none;
+  color: rgb(155, 155, 155);
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+body div.sidebar-footer-grid a:hover {
+  background-color: #1e2427;
+}
+body div.sidebar-header div.header-logo {
+  display: grid;
+  grid-template-columns: 66px 1fr;
+  grid-template-rows: 66px;
+  align-items: center;
+}
+body div.sidebar-header div.header-logo img {
+  object-fit: contain;
+  height: 55%;
+  width: 100%;
+}
+body div.sidebar-header div.header-logo .logo-name {
+  color: white;
+  font-family: Roboto, Arial;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+footer {
+  position: fixed;
+  left: 260px;
+  right: 0px;
+  bottom: 0px;
+  height: 44px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, .75);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer span {
+  font-family: Roboto, Arial;
+  color: rgb(118, 131, 143);
+}
+.site-footer-left .span-footer-left {
+  margin-left: 35px;
+  font-size: 14px;
+}
+.site-footer-right .span-footer-right {
+  margin-right: 35px;
+  font-size: 10px;
+}
