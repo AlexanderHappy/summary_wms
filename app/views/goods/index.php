@@ -38,10 +38,10 @@ $link = "<a href='/summary_wms/'>Dashboard</a> / <span>Master of Goods</span>";
   <?php $json = json_encode($goods); ?>
 
   <script type="module">
-    import { CreateTable } from '/record_wms/app/js/Classes/CreateTable.js';
+    import { CreateTable } from '/summary_wms/app/js/Classes/CreateTable.js';
     let goods = <?=$json?>;
 
-    let table = new CreateTable(5, goods).renderTable();
+    let table = new CreateTable(2, goods).renderTable();
   </script>
 
 <?php

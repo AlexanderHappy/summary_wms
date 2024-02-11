@@ -5,12 +5,13 @@ class CreateTable {
   table = document.querySelector('#myTable');
   tbody = this.table.createTBody();
   liObjects = [];
-
+  
   constructor(rowNumber, json_data) {
     this.rowNumber = rowNumber;
     this.json_data = json_data;
     this.usersLength = json_data.length;
     this.numbersPages = Math.ceil(this.usersLength / this.rowNumber);
+    this.liObjectsNums = [...Array(this.numbersPages).keys()].map(x => ++x);
   }
   
   #renderPagination() {
@@ -23,11 +24,17 @@ class CreateTable {
 
     // Вставка стрелки для пагинации слева
     let li = document.createElement('li');
+    li.addEventListener('click', () => {
+      this.#renderPreviousData();
+    });
     li.innerHTML = "&laquo;";
     this.pagination.prepend(li);
-
+    
     // Вставка стрелки для пагинации справа
     li = document.createElement('li');
+    li.addEventListener('click', () => {
+      this.#renderNextData();
+    });
     li.innerHTML = "&raquo;";
     this.pagination.appendChild(li);
     
@@ -79,6 +86,7 @@ class CreateTable {
     liObject.classList.add('active');
 
     const pageNum = +liObject.innerHTML;
+
     const start = (pageNum - 1) * this.rowNumber;
     const end = start + this.rowNumber;
 
@@ -108,7 +116,7 @@ class CreateTable {
         tr.appendChild(td);
       }
       // В конце каждой строки создает кнопки Action - Edit и Delete
-      this.#renderButton(tr);
+      this.#renderLink(tr);
       // В конце каждой строки создает кнопки Action - Edit и Delete
     }
   }
@@ -127,7 +135,7 @@ class CreateTable {
     tr.appendChild(td);
   }
 
-  #renderButton(tr) {
+  #renderLink(tr) {
     let td = document.createElement('td');
     td.classList.add('link-td');
 
@@ -145,11 +153,27 @@ class CreateTable {
     td.appendChild(a);
     tr.appendChild(td);
   }
+  
+  #renderNextData() {
+    let active = document.querySelector('#pagination li.active');
+    const num = Number(active.innerHTML);
+    if (num < this.liObjects.length) {
+      this.#renderTBody(this.liObjects[num]);
+    }
+  }
 
+  #renderPreviousData() {
+    let active = document.querySelector('#pagination li.active');
+    const num = Number(active.innerHTML);
+    if (num != 1) {
+      this.#renderTBody(this.liObjects[num - 2]);
+    }
+  }
+  
   renderTable() {
     this.#renderTHead();
     this.#renderPagination();
     // this.liObjects[0] передаем для отрисовки первых строк таблицы из БД при вызове метода
-    this.#renderTBody(this.liObjects[0]);
+    this.#renderTBody(this.liObjects[1]);
   }
 }
