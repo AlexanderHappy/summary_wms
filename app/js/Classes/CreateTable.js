@@ -20,6 +20,16 @@ class CreateTable {
       this.pagination.appendChild(li);
       this.liObjects.push(li);
     }
+
+    // Вставка стрелки для пагинации слева
+    let li = document.createElement('li');
+    li.innerHTML = "&laquo;";
+    this.pagination.prepend(li);
+
+    // Вставка стрелки для пагинации справа
+    li = document.createElement('li');
+    li.innerHTML = "&raquo;";
+    this.pagination.appendChild(li);
     
     this.liObjects.forEach((liObject) => {
       liObject.addEventListener('click', () => {
@@ -39,10 +49,21 @@ class CreateTable {
         trTHead.appendChild(th);
         
         th = document.createElement('th');
+        th.classList.add('action-head');
         th.innerHTML = 'Action';
         trTHead.appendChild(th);
         break;
       }
+
+      if (name === 'stock') {
+        let th = document.createElement('th');
+        const capitalizedWord = name[0].toUpperCase() + name.slice(1);
+        th.innerHTML = capitalizedWord;
+        th.classList.add('stock-head');
+        trTHead.appendChild(th);
+        continue;
+      }
+
       let th = document.createElement('th');
       const capitalizedWord = name[0].toUpperCase() + name.slice(1);
       th.innerHTML = capitalizedWord;
@@ -51,6 +72,12 @@ class CreateTable {
   }
 
   #renderTBody(liObject) {
+    let active = document.querySelector('#pagination li.active');
+    if (active) {
+      active.classList.remove('active');
+    }
+    liObject.classList.add('active');
+
     const pageNum = +liObject.innerHTML;
     const start = (pageNum - 1) * this.rowNumber;
     const end = start + this.rowNumber;
@@ -62,10 +89,18 @@ class CreateTable {
       let tr = this.tbody.insertRow();
       for (const info in good) {
         if (info === 'created_at') {
-          // Создает в элементе td два divs для create_at и updated_at
+          // Создает в элементе td два divа для create_at и updated_at
           this.#renderDate(good, tr);
-          // Создает в элементе td два divs для create_at и updated_at
+          // Создает в элементе td два divа для create_at и updated_at
           break;
+        }
+
+        if (info === 'stock') {
+          let td = document.createElement('td');
+          td.classList.add('stock');
+          td.innerHTML = good[info];
+          tr.appendChild(td);
+          continue;
         }
 
         let td = document.createElement('td');
@@ -82,27 +117,32 @@ class CreateTable {
     let td = document.createElement('td');
     let div = document.createElement('div');
     // div.classList.add('date'); - Добавление класса тэгу
-    div.innerHTML = good['created_at'];
+    div.innerHTML = `Created At: ${good['created_at']}`;
     td.appendChild(div);
     tr.appendChild(td);
     
     div = document.createElement('div');
-    div.innerHTML = good['updated_at'];
+    div.innerHTML = `Updated At: ${good['updated_at']}`;
     td.appendChild(div);
     tr.appendChild(td);
   }
 
   #renderButton(tr) {
     let td = document.createElement('td');
+    td.classList.add('link-td');
 
-    let button = document.createElement('button');
-    button.innerHTML = 'Edit';
-    td.appendChild(button);
+    let a = document.createElement('a');
+    a.classList.add('edit-link');
+    a.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
+    a.href = '#';
+    td.appendChild(a);
     tr.appendChild(td);
     
-    button = document.createElement('button');
-    button.innerHTML = 'Delete';
-    td.appendChild(button);
+    a = document.createElement('a');
+    a.classList.add('delete-link');
+    a.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
+    a.href = '#';
+    td.appendChild(a);
     tr.appendChild(td);
   }
 

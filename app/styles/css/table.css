@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+main div.container {
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-top: 125px;
+  position: relative;
+  z-index: 200;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+thead {
+  background-color: #f5f5f5;
+}
+.stock-head,
+.action-head {
+  text-align: center;
+}
+.stock {
+  color: red;
+  text-align: center;
+}
+td, th {
+  border: 1px solid #cfcfcf;
+  text-align: left;
+  padding: 8px;
+}
+.link-td {
+  text-align: center;
+}
+tr:nth-child(even) {
+  background-color: #fbfbfb;
+}
+
+.ul-table {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  padding-top: 20px;
+  padding-left: 20px
+}
+.ul-table li {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+}
+.ul-table li:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.ul-table li:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.ul-table li.active {
+  background-color: rgb(0, 192, 239);
+  color: white;
+  border: 1px solid rgb(0, 192, 239);
+}
+.ul-table li:hover {
+  cursor: pointer;
+}
+.ul-table li:hover:not(.active) {
+  background-color: #ddd;
+  background-color: rgb(0, 192, 239);
+}
+
+.wrapper {
+  background-color: white;
+  padding-bottom: 71px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, .75);
+  border-radius: 5px;  
+}
+div.wrapper > p {
+  padding-top: 35px;
+  padding-bottom: 35px;
+  padding-left: 20px;
+  font-family: Roboto, Arial;
+  font-size: 25px;
+  color: rgb(65, 65, 65);
+}
+
+.search-option-bar {
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+.search-option-bar > p {
+  display: inline-block;
+  font-size: 14px;
+  font-family: Roboto, Arial;
+  padding-right: 25px;
+}
+.search-option-bar > select {
+  width: 350px;
+  margin-right: 6px;
+  padding: 8px;
+  padding-left: 15px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: rgb(200, 200, 200);
+}
+input.search-bar {
+  width: 350px;
+  padding: 9px;
+  padding-left: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-color: rgb(200, 200, 200);
+}
+.submit-button {
+  margin-left: -5px;
+  padding: 9px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-width: 1px;
+  background-color: rgb(0, 214, 100);
+}
+.submit-button:hover {
+ filter: brightness(90%);
+}
+.submit-button:active {
+  padding: 8px;
+  border-width: 2px;
+}
+
+.link-td > a {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+.link-td > a:hover {
+  filter: brightness(75%);
+}
+.link-td .edit-link {
+  color: rgb(55, 55, 255);
+}
+.link-td .delete-link {
+  color: rgb(255, 47, 47);
+  padding-left: 10px;
+}

@@ -35,7 +35,6 @@ ul.sidebar-listmenu li.item > a:hover,
   background-color: rgba(255, 255, 255, 0.05);
   opacity: .8;
   cursor: pointer;
-
 }
 body ul.sidebar-listmenu li i {
   margin-right: 16px;

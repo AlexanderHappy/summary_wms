@@ -1,6 +1,7 @@
 <?php
 ob_start();
 $title = 'Home Page!';
+$link = "<a href='/record_wms/'>Dashboard</a> / ";
 ?>
 
 <p>When will this end?</p>

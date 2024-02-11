@@ -9,17 +9,23 @@
   <link rel="stylesheet" href="app/styles/css/header.css">
   <link rel="stylesheet" href="app/styles/css/footer-sidebar.css">
   <link rel="stylesheet" href="app/styles/css/nav-sidebar.css">
-  <link rel="stylesheet" href="app/styles/css/container-table.css">
+  <link rel="stylesheet" href="app/styles/css/table.css">
+  
   <link rel="stylesheet" href="app/styles/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
+  
   <!-- Header -->
   <header class="header">
     <div class="sidebar-header">
       <div class="header-logo">
-        <img src="app/picture/logo.png">
+        <img src="app/styles/picture/logo.png">
         <div class="logo-name">CI-WMS</div>
       </div>
+    </div>
+    
+    <div class="header-links">
+      <?= $link ?>
     </div>
   </header>
   <!-- Header -->
@@ -30,13 +36,13 @@
       <ul class="sidebar-listmenu">
         <li class="main-menu-row">Main-Menu</li>
         <li class="item">
-          <a href="#">
-            <i class="fa fa-tachometer" aria-hidden="true"></i>
+          <a href="/<?= APP_BASE_PATH ?>/">
+            <i class="fa fa-tachometer" aria-hi class="second-row"dden="true"></i>
             <span>Dashboard</span>
           </a>
         </li>
         <li class="item">
-          <a href="#">
+          <a href="/<?= APP_BASE_PATH ?>/goods">
             <i class="fa fa-archive" aria-hidden="true"></i>
             <span>Master of Goods</span>
           </a>
@@ -76,7 +82,7 @@
         </li>
         <li class="item">
           <a class="collapsible">
-            <i class="fa fa-exchange" aria-hidden="true"></i>
+          <i class="fa fa-bar-chart" aria-hidden="true"></i>
             <span>Reports</span>
             <i class="fa fa-angle-right" aria-hidden="true"></i>
             <ul class="content">
@@ -103,7 +109,7 @@
         </li>
         <li class="item">
           <a class="collapsible">
-            <i class="fa fa-exchange" aria-hidden="true"></i>
+            <i class="fa fa-list" aria-hidden="true"></i>
             <span>Master List</span>
             <i class="fa fa-angle-right" aria-hidden="true"></i>
             <ul class="content">
@@ -160,10 +166,18 @@
 
   <!-- Main Content -->
   <main>
-    <!-- Для $content -->
-    <p class="paragraph">Table</p>
+    <div class="blue-block">
+      <p class="first-row">
+        <?= $title ?>
+      </p>
+      <p class="second-row">
+        <?= $info ?>
+      </p>
+    </div>
+    <?= $content ?>
   </main>
   <!-- Main Content -->
+
   <script src="app/js/scripts/collapsible-scripts.js"></script>
 </body>
 </html>
