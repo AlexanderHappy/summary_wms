@@ -88,16 +88,18 @@ div.wrapper > p {
 }
 
 .search-option-bar {
+  display: flex;
+  justify-content: space-between;
   padding-left: 20px;
   padding-bottom: 20px;
 }
-.search-option-bar > p {
+.search-option-bar p {
   display: inline-block;
   font-size: 14px;
   font-family: Roboto, Arial;
   padding-right: 25px;
 }
-.search-option-bar > select {
+.search-option-bar select {
   width: 350px;
   margin-right: 6px;
   padding: 8px;
@@ -147,7 +149,7 @@ input.search-bar {
 }
 .link-td .delete-link {
   color: rgb(255, 47, 47);
-  padding-left: 10px;
+  padding-left: 16px;
 }
 
 .js-size-charger {
@@ -163,4 +165,20 @@ input.search-bar {
   margin-left: 20px;
   margin-right: 10px;
   border-radius: 5px;
+}
+
+.js-refresh-button {
+  border-radius: 5px;
+  padding: 9px;
+  border-width: 1px;
+  background-color: rgb(0, 214, 100);
+  cursor: pointer;
+  margin-right: 10px;
+}
+.js-refresh-button:hover {
+  filter: brightness(90%);
+}
+.js-refresh-button:active {
+  padding: 8px;
+  border-width: 2px;
 }
