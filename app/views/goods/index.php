@@ -3,7 +3,7 @@ ob_start();
 $title = 'Goods';
 $info = 'Information about Goods:';
 
-$link = "<a href='/summary_wms/'>Dashboard</a> / <span>Master of Goods</span>";
+$link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Master of Goods</span>";
 ?>
 
   <div class="container">
@@ -37,15 +37,26 @@ $link = "<a href='/summary_wms/'>Dashboard</a> / <span>Master of Goods</span>";
       <!-- Таблица отрендеринная JS-ом -->
       </table>
 
-      <select class="js-size-charger">
-        <option value="4">4</option>
-        <option value="6">6</option>
-        <option value="8">8</option>
-      </select>
+      <div class="pagination-sizer-add">
+        <div>
+          <select class="js-size-charger">
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+          </select>
 
-      <ul class="ul-table" id="pagination">
-      <!-- Пагинация отрендеринная JS-ом -->
-      </ul>
+          <ul class="ul-table" id="pagination">
+          <!-- Пагинация отрендеринная JS-ом -->
+          </ul>
+        </div>
+
+        <a href="/<?= APP_BASE_PATH ?>/goods/create" class="create-link">
+          <button>
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Adding new Good
+          </button>
+        </a>
+      </div>
     </div>
   </div>
   
@@ -53,9 +64,9 @@ $link = "<a href='/summary_wms/'>Dashboard</a> / <span>Master of Goods</span>";
   <?php $json = json_encode($goods); ?>
 
   <script type="module">
-    import { RenderTable } from '/summary_wms/app/js/Classes/RenderTable.js';
-    import { SliceTable } from '/summary_wms/app/js/Classes/SliceTable.js';
-    import { deleteTable } from '/summary_wms/app/js/Functions/deleteTable.js';
+    import { RenderTable } from '/<?= APP_BASE_PATH?>/app/js/Classes/RenderTable.js';
+    import { SliceTable } from '/<?= APP_BASE_PATH?>/app/js/Classes/SliceTable.js';
+    import { deleteTable } from '/<?= APP_BASE_PATH?>/app/js/Functions/deleteTable.js';
 
     // Передаем данные полученные выше из БД
     let goods = <?=$json?>;

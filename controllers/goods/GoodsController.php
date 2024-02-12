@@ -12,6 +12,10 @@ class GoodsController
     $goods = $goodsModel->readAll();
     include 'app/views/goods/index.php';
   }
+
+  public function create() {
+    include 'app/views/goods/create.php';
+  }
 }
 
 ?>

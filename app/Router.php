@@ -6,7 +6,7 @@ class Router
 {
   private $routes = [
     '/^\/' . APP_BASE_PATH . '\/?$/' => ['controller' => 'home\\HomeController', 'action' => 'index'],
-    '/^\/' . APP_BASE_PATH . '\/goods\/?$/' => ['controller' => 'goods\\GoodsController'],
+    '/^\/' . APP_BASE_PATH . '\/goods(\/(?P<action>[a-z]+)?)?$/' => ['controller' => 'goods\\GoodsController'],
   ];
 
   public function run()

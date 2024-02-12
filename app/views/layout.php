@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CI-WMS</title>
 
-  <link rel="stylesheet" href="app/styles/css/general.css">
-  <link rel="stylesheet" href="app/styles/css/header.css">
-  <link rel="stylesheet" href="app/styles/css/footer-sidebar.css">
-  <link rel="stylesheet" href="app/styles/css/nav-sidebar.css">
-  <link rel="stylesheet" href="app/styles/css/table.css">
   
-  <link rel="stylesheet" href="app/styles/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost/<?= APP_BASE_PATH ?>/app/styles/css/general.css">
+  <link rel="stylesheet" href="http://localhost/<?= APP_BASE_PATH ?>/app/styles/css/header.css">
+  <link rel="stylesheet" href="http://localhost/<?= APP_BASE_PATH ?>/app/styles/css/footer-sidebar.css">
+  <link rel="stylesheet" href="http://localhost/<?= APP_BASE_PATH ?>/app/styles/css/nav-sidebar.css">
+  <link rel="stylesheet" href="http://localhost/<?= APP_BASE_PATH ?>/app/styles/css/table.css">
+  <link rel="stylesheet" href="http://localhost/<?= APP_BASE_PATH ?>/app/styles/css/create.css">
+  
+  <link rel="stylesheet" href="http://localhost/<?= APP_BASE_PATH ?>/app/styles/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
   
@@ -19,7 +21,7 @@
   <header class="header">
     <div class="sidebar-header">
       <div class="header-logo">
-        <img src="app/styles/picture/logo.png">
+        <img src="http://localhost/<?= APP_BASE_PATH ?>/app/styles/picture/logo.png">
         <div class="logo-name">CI-WMS</div>
       </div>
     </div>
@@ -178,6 +180,6 @@
   </main>
   <!-- Main Content -->
 
-  <script src="app/js/scripts/collapsible-scripts.js"></script>
+  <script src="http://localhost/<?= APP_BASE_PATH ?>/app/js/scripts/collapsible-scripts.js"></script>
 </body>
 </html>
