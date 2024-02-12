@@ -1,6 +1,6 @@
-export { SearchTable };
+export { SliceTable };
 
-class SearchTable {
+class SliceTable {
   constructor(data, whatLookFor, whereLoookFor) {
     this.data = data;
     this.whereLoookFor = whereLoookFor;

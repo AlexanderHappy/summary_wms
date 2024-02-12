@@ -54,8 +54,10 @@ $link = "<a href='/summary_wms/'>Dashboard</a> / <span>Master of Goods</span>";
 
   <script type="module">
     import { RenderTable } from '/summary_wms/app/js/Classes/RenderTable.js';
-    import { SearchTable } from '/summary_wms/app/js/Classes/SearchTable.js';
-    // Передаем данные полученные выше
+    import { SliceTable } from '/summary_wms/app/js/Classes/SliceTable.js';
+    import { deleteTable } from '/summary_wms/app/js/Functions/deleteTable.js';
+
+    // Передаем данные полученные выше из БД
     let goods = <?=$json?>;
     // Ренедерим таблицу
     let table = new RenderTable(4, goods).renderTable();
@@ -65,10 +67,7 @@ $link = "<a href='/summary_wms/'>Dashboard</a> / <span>Master of Goods</span>";
     size_charger.addEventListener('change', () => {
       const amtRowInTable = Number(size_charger.value);
       // Стираем содержимое таблицы
-      let table = document.getElementById('myTable');
-      let pagination = document.getElementById('pagination');
-      table.innerHTML = '';
-      pagination.innerHTML = '';
+      deleteTable();
       // Рендерим её заново
       table = new RenderTable(amtRowInTable, goods).renderTable();
     });
@@ -81,14 +80,11 @@ $link = "<a href='/summary_wms/'>Dashboard</a> / <span>Master of Goods</span>";
       const selected_column = option.value;
       const entered_text = text.value;
 
-      let data = new SearchTable(goods, entered_text, selected_column).getNewData();
+      let data = new SliceTable(goods, entered_text, selected_column).getNewData();
 
       const amtRowInTable = Number(size_charger.value);
       // Стираем содержимое таблицы
-      let table = document.getElementById('myTable');
-      let pagination = document.getElementById('pagination');
-      table.innerHTML = '';
-      pagination.innerHTML = '';
+      deleteTable();
       // Рендерим её заново
       table = new RenderTable(amtRowInTable, data).renderTable();
     });
@@ -97,10 +93,7 @@ $link = "<a href='/summary_wms/'>Dashboard</a> / <span>Master of Goods</span>";
     refresh_button.addEventListener('click', () => {
       const amtRowInTable = Number(size_charger.value);
       // Стираем содержимое таблицы
-      let table = document.getElementById('myTable');
-      let pagination = document.getElementById('pagination');
-      table.innerHTML = '';
-      pagination.innerHTML = '';
+      deleteTable();
       // Рендерим её заново
       table = new RenderTable(amtRowInTable, goods).renderTable();
     });
