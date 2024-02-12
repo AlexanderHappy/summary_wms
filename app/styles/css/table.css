@@ -117,7 +117,7 @@ input.search-bar {
   border-bottom-left-radius: 5px;
   border-color: rgb(200, 200, 200);
 }
-.submit-button {
+.js-submit-button {
   margin-left: -5px;
   padding: 9px;
   border-top-right-radius: 5px;
@@ -126,10 +126,10 @@ input.search-bar {
   background-color: rgb(0, 214, 100);
   cursor: pointer;
 }
-.submit-button:hover {
+.js-submit-button:hover {
  filter: brightness(90%);
 }
-.submit-button:active {
+.js-submit-button:active {
   padding: 8px;
   border-width: 2px;
 }
@@ -148,4 +148,19 @@ input.search-bar {
 .link-td .delete-link {
   color: rgb(255, 47, 47);
   padding-left: 10px;
+}
+
+.js-size-charger {
+  color: black;
+  float: left;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 10px;
+  border-radius: 5px;
 }

@@ -1,6 +1,6 @@
-export { CreateTable };
+export { RenderTable };
 
-class CreateTable { 
+class RenderTable { 
   pagination = document.querySelector('#pagination');
   table = document.querySelector('#myTable');
   tbody = this.table.createTBody();
@@ -124,7 +124,7 @@ class CreateTable {
   #renderDate(good, tr) {
     let td = document.createElement('td');
     let div = document.createElement('div');
-    // div.classList.add('date'); - Добавление класса тэгу
+
     div.innerHTML = `Created At: ${good['created_at']}`;
     td.appendChild(div);
     tr.appendChild(td);
@@ -154,6 +154,7 @@ class CreateTable {
     tr.appendChild(td);
   }
   
+  // Метод для правой стрелки в пагинации
   #renderNextData() {
     let active = document.querySelector('#pagination li.active');
     const num = Number(active.innerHTML);
@@ -161,7 +162,8 @@ class CreateTable {
       this.#renderTBody(this.liObjects[num]);
     }
   }
-
+  
+  // Метод для левой стрелки в пагинации
   #renderPreviousData() {
     let active = document.querySelector('#pagination li.active');
     const num = Number(active.innerHTML);
@@ -174,6 +176,6 @@ class CreateTable {
     this.#renderTHead();
     this.#renderPagination();
     // this.liObjects[0] передаем для отрисовки первых строк таблицы из БД при вызове метода
-    this.#renderTBody(this.liObjects[1]);
+    this.#renderTBody(this.liObjects[0]);
   }
 }
