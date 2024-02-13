@@ -1,5 +1,57 @@
 .create-form {
-  display: inline-block;
+  position: relative;
+  z-index: 400;
   background-color: white;
-  margin-top: 200px;
+  margin-top: 120px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, .75);
+  border-radius: 5px;
+  margin-left: 35px;
+  margin-right: 35px;
+  padding-left: 20px;
+}
+.create-form form > div > label {
+  display: block;
+  font-family: Roboto, Arial;
+  font-size: 28px;
+}
+.create-form form > div > input {
+  margin-right: 6px;
+  padding: 8px;
+  padding-left: 15px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: rgb(200, 200, 200);
+  margin-top: 6px;
+  font-size: 20px;
+}
+.name-input {
+  padding-top: 40px;
+}
+.brand-input,
+.stock-input {
+  padding-top: 24px;
+}
+.name-input > input {
+  width: 350px;
+}
+.brand-input > input {
+  width: 350px;
+}
+.stock-input > input {
+  width: 50px;
+}
+
+.submit-button {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 8px 16px;
+  border-width: 1px;
+  background-color: rgb(0, 214, 100);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.submit-button:hover {
+  filter: brightness(90%);
 }

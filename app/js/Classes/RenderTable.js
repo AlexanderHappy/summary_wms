@@ -116,7 +116,7 @@ class RenderTable {
         tr.appendChild(td);
       }
       // В конце каждой строки создает кнопки Action - Edit и Delete
-      this.#renderLink(tr);
+      this.#renderLink(good, tr);
       // В конце каждой строки создает кнопки Action - Edit и Delete
     }
   }
@@ -135,21 +135,21 @@ class RenderTable {
     tr.appendChild(td);
   }
 
-  #renderLink(tr) {
+  #renderLink(good, tr) {
     let td = document.createElement('td');
     td.classList.add('link-td');
 
     let a = document.createElement('a');
     a.classList.add('edit-link');
     a.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
-    a.href = '#';
+    a.href = `/summary_wms/goods/edit/${good['id']}`;
     td.appendChild(a);
     tr.appendChild(td);
     
     a = document.createElement('a');
     a.classList.add('delete-link');
     a.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
-    a.href = '#';
+    a.href = `/summary_wms/goods/delete/${good['id']}`;
     td.appendChild(a);
     tr.appendChild(td);
   }

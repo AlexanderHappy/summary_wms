@@ -50,12 +50,6 @@
           </a>
         </li>
         <li class="item">
-          <a href="#">
-            <i class="fa fa-list" aria-hidden="true"></i>
-            <span>Minimum Stock</span>
-          </a>
-        </li>
-        <li class="item">
           <a class="collapsible">
             <i class="fa fa-exchange" aria-hidden="true"></i>
             <span>Transactions</span>

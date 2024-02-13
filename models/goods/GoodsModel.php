@@ -52,6 +52,66 @@ class GoodsModel
       return;
     }
   }
+
+  public function create($data)
+  {
+    $name = $data['name'];
+    $brand = $data['brand'];
+    $stock = $data['stock'];
+
+    $query = "INSERT INTO `goods` (name, brand, stock) VALUE (?,?,?)";
+
+    try {
+      $stmt = $this->db->prepare($query);
+      $stmt->execute([$name, $brand, $stock]);
+      return true;
+    } catch (\PDOException $exp) {
+      return false;
+    }
+  }
+
+  public function read($id)
+  {
+    $query = 'SELECT * FROM `goods` WHERE id = ?';
+
+    try {
+      $stmt = $this->db->prepare($query);
+      $stmt->execute([$id]);
+      $res = $stmt->fetch(\PDO::FETCH_ASSOC);
+      return $res;
+    } catch (\PDOException $exep) {
+      return false;
+    }
+  }
+
+  public function update($id, $data)
+  {
+    $name = $data['name'];
+    $brand = $data['brand'];
+    $stock = $data['stock'];
+
+    $query = 'UPDATE `goods` SET name = ?, brand = ?, stock = ? WHERE id = ?';
+
+    try {
+      $stmt = $this->db->prepare($query);
+      $stmt->execute([$name, $brand, $stock, $id]);
+      return true;
+    } catch (\PDOException $exep) {
+      return false;
+    }
+  }
+
+  public function delete($id)
+  {
+    $query = 'DELETE FROM `goods` WHERE id = ?';
+
+    try {
+      $stmt = $this->db->prepare($query);
+      $stmt->execute([$id]);
+    } catch (\PDOException $exep) {
+      return false;
+    }
+  }
 }
 
 ?>
