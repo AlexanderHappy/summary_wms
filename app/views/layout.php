@@ -110,21 +110,21 @@
             <i class="fa fa-angle-right" aria-hidden="true"></i>
             <ul class="content">
               <li>
-                <a class="item-link" href="#">
+                <a class="item-link" href="/<?= APP_BASE_PATH ?>/suppliers">
                   <i class="fa fa-angle-right" aria-hidden="true"></i>
-                  <span>Incoming Goods</span>
+                  <span>Suppliers</span>
                 </a>
               </li>
               <li>
                 <a class="item-link" href="#">
                   <i class="fa fa-angle-right" aria-hidden="true"></i>
-                  <span>Outgoing Goods</span>
+                  <span>Customers</span>
                 </a>
               </li>
               <li>
                 <a class="item-link" href="#">
                   <i class="fa fa-angle-right" aria-hidden="true"></i>
-                  <span>Adjustment</span>
+                  <span>System Users</span>
                 </a>
               </li>
             </ul>

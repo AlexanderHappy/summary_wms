@@ -1,10 +1,10 @@
 <?php
 
-namespace models\goods;
+namespace models\suppliers;
 
 use models\Database;
 
-class GoodsModel
+class SuppliersModel
 {
   private $db;
 
@@ -13,26 +13,26 @@ class GoodsModel
     $this->db = Database::getInstance()->getConnection();
 
     try {
-      $this->db->query("SELECT 1 FROM `goods`");
-    } catch (\PDOException $exp) {
+      $this->db->query('SELECT 1 FROM `suppliers`');
+    } catch (\Throwable $th) {
       $this->createTable();
     }
   }
 
   private function createTable()
   {
-    $goodsTableCreateQuery = "CREATE TABLE IF NOT EXISTS `goods` (
+    $suppliersTableCreateQuery = "CREATE TABLE IF NOT EXISTS `suppliers` (
       `id` INT NOT NULL AUTO_INCREMENT,
       `name` VARCHAR(255) DEFAULT 'Not Indicated',
-      `brand` VARCHAR(255) DEFAULT 'Not Indicated',
-      `stock` INT(8) DEFAULT 0,
+      `address` VARCHAR(255) DEFAULT 'Not Indicated',
+      `telephone` VARCHAR(255) DEFAULT 'Not Indicated',
       `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
-      `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      `update_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
       PRIMARY KEY (`id`)
     )";
 
     try {
-      $this->db->exec($goodsTableCreateQuery);
+      $this->db->exec($suppliersTableCreateQuery);
     } catch (\PDOException $exp) {
       echo "Somethin goes wrong: " . $exp->getMessage();
       return false;
@@ -42,13 +42,12 @@ class GoodsModel
   public function readAll()
   {
     try {
-      $stmt = $this->db->query("SELECT * FROM `goods`");
+      $stmt = $this->db->query('SELECT * FROM `suppliers`');
 
-      $goods = Array();
+      $suppliers = Array();
       while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-        array_push($goods, $row);
+        array_push($suppliers, $row);
       }
-      return $goods;
     } catch (\PDOException $exp) {
       echo "Somethin goes wrong: " . $exp->getMessage();
       return false;
@@ -58,14 +57,14 @@ class GoodsModel
   public function create($data)
   {
     $name = $data['name'];
-    $brand = $data['brand'];
-    $stock = $data['stock'];
+    $address = $data['address'];
+    $telephone = $data['telephone'];
 
-    $query = "INSERT INTO `goods` (name, brand, stock) VALUE (?,?,?)";
+    $query = 'INSERT INTO `suppliers` (name, address, telephone) VALUE (?,?,?)';
 
     try {
       $stmt = $this->db->prepare($query);
-      $stmt->execute([$name, $brand, $stock]);
+      $stmt->execute([$name, $address, $telephone]);
       return true;
     } catch (\PDOException $exp) {
       echo "Somethin goes wrong: " . $exp->getMessage();
@@ -75,13 +74,12 @@ class GoodsModel
 
   public function read($id)
   {
-    $query = 'SELECT * FROM `goods` WHERE id = ?';
+    $query = 'SELECT * FROM `suppliers` WHERE id = ?';
 
     try {
       $stmt = $this->db->prepare($query);
       $stmt->execute([$id]);
       $res = $stmt->fetch(\PDO::FETCH_ASSOC);
-      return $res;
     } catch (\PDOException $exp) {
       echo "Somethin goes wrong: " . $exp->getMessage();
       return false;
@@ -91,14 +89,14 @@ class GoodsModel
   public function update($id, $data)
   {
     $name = $data['name'];
-    $brand = $data['brand'];
-    $stock = $data['stock'];
+    $address = $data['address'];
+    $telephone = $data['telephone'];
 
-    $query = 'UPDATE `goods` SET name = ?, brand = ?, stock = ? WHERE id = ?';
+    $query = 'UPDATE `suppliers` SET name = ?, address = ?, telephone = ? WHERE id = ?';
 
     try {
       $stmt = $this->db->prepare($query);
-      $stmt->execute([$name, $brand, $stock, $id]);
+      $stmt->execute([$name, $address, $telephone, $id]);
       return true;
     } catch (\PDOException $exp) {
       echo "Somethin goes wrong: " . $exp->getMessage();
@@ -108,7 +106,7 @@ class GoodsModel
 
   public function delete($id)
   {
-    $query = 'DELETE FROM `goods` WHERE id = ?';
+    $query = 'DELETE FROM `suppliers` WHERE id = ?';
 
     try {
       $stmt = $this->db->prepare($query);
