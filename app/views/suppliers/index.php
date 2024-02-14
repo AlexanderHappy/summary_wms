@@ -9,7 +9,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Goods</span>"
   <div class="container">
     <div class="wrapper">        
       <p>
-        View Goods Data
+        View Suppliers
       </p>
       <div class="search-option-bar">
         <div>
@@ -65,14 +65,14 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Goods</span>"
   <?php $json = json_encode($suppliers); ?>
 
   <script type="module">
-    import { RenderTable } from '/<?= APP_BASE_PATH?>/app/js/Classes/RenderTable.js';
+    import { RenderTableSuppliers } from '/<?= APP_BASE_PATH?>/app/js/Classes/RenderTableSuppliers.js';
     import { SliceTable } from '/<?= APP_BASE_PATH?>/app/js/Classes/SliceTable.js';
     import { deleteTable } from '/<?= APP_BASE_PATH?>/app/js/Functions/deleteTable.js';
 
     // Передаем данные полученные выше из БД
     let suppliers = <?=$json?>;
     // Ренедерим таблицу
-    let table = new RenderTable(4, suppliers).renderTable();
+    let table = new RenderTableSuppliers(4, suppliers).renderTable();
 
     // Добавляем отрисовку таблицы в зависимости от выбранного числа в select
     const size_charger = document.querySelector('.js-size-charger');
@@ -81,7 +81,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Goods</span>"
       // Стираем содержимое таблицы
       deleteTable();
       // Рендерим её заново
-      table = new RenderTable(amtRowInTable, suppliers).renderTable();
+      table = new RenderTableSuppliers(amtRowInTable, suppliers).renderTable();
     });
 
     // Получаем введенное значение из полей поиска и select
@@ -98,7 +98,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Goods</span>"
       // Стираем содержимое таблицы
       deleteTable();
       // Рендерим её заново
-      table = new RenderTable(amtRowInTable, data).renderTable();
+      table = new RenderTableSuppliers(amtRowInTable, data).renderTable();
     });
 
     const refresh_button = document.querySelector('.js-refresh-button');
@@ -107,7 +107,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Goods</span>"
       // Стираем содержимое таблицы
       deleteTable();
       // Рендерим её заново
-      table = new RenderTable(amtRowInTable, suppliers).renderTable();
+      table = new RenderTableSuppliers(amtRowInTable, suppliers).renderTable();
     });
   </script>
 

@@ -64,14 +64,14 @@ $link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Master of Goods<
   <?php $json = json_encode($goods); ?>
 
   <script type="module">
-    import { RenderTable } from '/<?= APP_BASE_PATH?>/app/js/Classes/RenderTable.js';
+    import { RenderTableMasterOfGoods } from '/<?= APP_BASE_PATH?>/app/js/Classes/RenderTableMasterOfGoods.js';
     import { SliceTable } from '/<?= APP_BASE_PATH?>/app/js/Classes/SliceTable.js';
     import { deleteTable } from '/<?= APP_BASE_PATH?>/app/js/Functions/deleteTable.js';
 
     // Передаем данные полученные выше из БД
     let goods = <?=$json?>;
     // Ренедерим таблицу
-    let table = new RenderTable(4, goods).renderTable();
+    let table = new RenderTableMasterOfGoods(4, goods).renderTable();
 
     // Добавляем отрисовку таблицы в зависимости от выбранного числа в select
     const size_charger = document.querySelector('.js-size-charger');
@@ -80,7 +80,7 @@ $link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Master of Goods<
       // Стираем содержимое таблицы
       deleteTable();
       // Рендерим её заново
-      table = new RenderTable(amtRowInTable, goods).renderTable();
+      table = new RenderTableMasterOfGoods(amtRowInTable, goods).renderTable();
     });
 
     // Получаем введенное значение из полей поиска и select
@@ -97,7 +97,7 @@ $link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Master of Goods<
       // Стираем содержимое таблицы
       deleteTable();
       // Рендерим её заново
-      table = new RenderTable(amtRowInTable, data).renderTable();
+      table = new RenderTableMasterOfGoods(amtRowInTable, data).renderTable();
     });
 
     const refresh_button = document.querySelector('.js-refresh-button');
@@ -106,7 +106,7 @@ $link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Master of Goods<
       // Стираем содержимое таблицы
       deleteTable();
       // Рендерим её заново
-      table = new RenderTable(amtRowInTable, goods).renderTable();
+      table = new RenderTableMasterOfGoods(amtRowInTable, goods).renderTable();
     });
   </script>
 

@@ -48,6 +48,7 @@ class SuppliersModel
       while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
         array_push($suppliers, $row);
       }
+      return $suppliers;
     } catch (\PDOException $exp) {
       echo "Somethin goes wrong: " . $exp->getMessage();
       return false;
@@ -80,6 +81,7 @@ class SuppliersModel
       $stmt = $this->db->prepare($query);
       $stmt->execute([$id]);
       $res = $stmt->fetch(\PDO::FETCH_ASSOC);
+      return $res;
     } catch (\PDOException $exp) {
       echo "Somethin goes wrong: " . $exp->getMessage();
       return false;
