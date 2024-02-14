@@ -9,6 +9,7 @@ class Router
     '/^\/' . APP_BASE_PATH . '\/goods(\/(?P<action>[a-z]+)(\/(?P<id>\d+))?)?$/' => ['controller' => 'goods\\GoodsController'],
     '/^\/' . APP_BASE_PATH . '\/suppliers(\/(?P<action>[a-z]+)(\/(?P<id>\d+))?)?$/' => ['controller' => 'suppliers\\SuppliersController'],
     '/^\/' . APP_BASE_PATH . '\/customers(\/(?P<action>[a-z]+)(\/(?P<id>\d+))?)?$/' => ['controller' => 'customers\\CustomersController'],
+    '/^\/' . APP_BASE_PATH . '\/incomings(\/(?P<action>[a-z]+)(\/(?P<id>\d+))?)?$/' => ['controller' => 'incomings\\IncomingsController'],
   ];
 
   public function run()

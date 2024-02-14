@@ -22,14 +22,14 @@ class CustomersModel
   private function createTable()
   {
     $customersTableCreateQuery = "CREATE TABLE IF NOT EXISTS `customers` (
-      `id` INT NOT NULL AUTO_INCREMENT,
+      `customer_id` INT NOT NULL AUTO_INCREMENT,
       `name` VARCHAR(255) DEFAULT 'Not Indicated',
       `address` VARCHAR(255) DEFAULT 'Not Indicated',
       `telephone` VARCHAR(255) DEFAULT 'Not Indicated',
       `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
       `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
       PRIMARY KEY (`id`)
-    )";
+    ) ENGINE=InnoDB";
 
     try {
       $this->db->exec($customersTableCreateQuery);
@@ -75,7 +75,7 @@ class CustomersModel
 
   public function read($id)
   {
-    $query = 'SELECT * FROM `customers` WHERE id = ?';
+    $query = 'SELECT * FROM `customers` WHERE customer_id = ?';
 
     try {
       $stmt = $this->db->prepare($query);
@@ -94,7 +94,7 @@ class CustomersModel
     $address = $data['address'];
     $telephone = $data['telephone'];
 
-    $query = 'UPDATE `customers` SET name = ?, address = ?, telephone = ? WHERE id = ?';
+    $query = 'UPDATE `customers` SET name = ?, address = ?, telephone = ? WHERE customer_id = ?';
 
     try {
       $stmt = $this->db->prepare($query);
@@ -108,7 +108,7 @@ class CustomersModel
 
   public function delete($id)
   {
-    $query = 'DELETE FROM `customers` WHERE id = ?';
+    $query = 'DELETE FROM `customers` WHERE customer_id = ?';
 
     try {
       $stmt = $this->db->prepare($query);

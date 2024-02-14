@@ -22,14 +22,14 @@ class GoodsModel
   private function createTable()
   {
     $goodsTableCreateQuery = "CREATE TABLE IF NOT EXISTS `goods` (
-      `id` INT NOT NULL AUTO_INCREMENT,
+      `good_id` INT NOT NULL AUTO_INCREMENT,
       `name` VARCHAR(255) DEFAULT 'Not Indicated',
       `brand` VARCHAR(255) DEFAULT 'Not Indicated',
       `stock` INT(8) DEFAULT 0,
       `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
       `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
       PRIMARY KEY (`id`)
-    )";
+    ) ENGINE=InnoDB";
 
     try {
       $this->db->exec($goodsTableCreateQuery);
@@ -75,7 +75,7 @@ class GoodsModel
 
   public function read($id)
   {
-    $query = 'SELECT * FROM `goods` WHERE id = ?';
+    $query = 'SELECT * FROM `goods` WHERE good_id = ?';
 
     try {
       $stmt = $this->db->prepare($query);
@@ -94,7 +94,7 @@ class GoodsModel
     $brand = $data['brand'];
     $stock = $data['stock'];
 
-    $query = 'UPDATE `goods` SET name = ?, brand = ?, stock = ? WHERE id = ?';
+    $query = 'UPDATE `goods` SET name = ?, brand = ?, stock = ? WHERE good_id = ?';
 
     try {
       $stmt = $this->db->prepare($query);
@@ -108,7 +108,7 @@ class GoodsModel
 
   public function delete($id)
   {
-    $query = 'DELETE FROM `goods` WHERE id = ?';
+    $query = 'DELETE FROM `goods` WHERE good_id = ?';
 
     try {
       $stmt = $this->db->prepare($query);
