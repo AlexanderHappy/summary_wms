@@ -1,15 +1,15 @@
 <?php
 ob_start();
-$title = 'Supplier';
+$title = 'Customers';
 $info = 'Information about Suppliers:';
 $project_name = APP_BASE_PATH;
-$link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Suppliers</span>";
+$link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Customers</span>";
 ?>
 
   <div class="container">
     <div class="wrapper">        
       <p>
-        View Suppliers
+        View Customers
       </p>
       <div class="search-option-bar">
         <div>
@@ -51,10 +51,10 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Suppliers</sp
           </ul>
         </div>
 
-        <a href="/<?= APP_BASE_PATH ?>/suppliers/create" class="create-link">
+        <a href="/<?= APP_BASE_PATH ?>/customers/create" class="create-link">
           <button>
             <i class="fa fa-plus" aria-hidden="true"></i>
-            Adding new Supplier
+            Adding new Customers
           </button>
         </a>
       </div>
@@ -62,17 +62,17 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Suppliers</sp
   </div>
   
   <!-- Данные из БД переводим в JSON для передачи их JS-у -->
-  <?php $json = json_encode($suppliers); ?>
+  <?php $json = json_encode($customers); ?>
 
   <script type="module">
-    import { RenderTableSuppliers } from '/<?= APP_BASE_PATH?>/app/js/Classes/RenderTableSuppliers.js';
+    import { RenderTableCustomers } from '/<?= APP_BASE_PATH?>/app/js/Classes/RenderTableCustomers.js';
     import { sliceTable } from '/<?= APP_BASE_PATH?>/app/js/functions/sliceTable.js';
     import { deleteTable } from '/<?= APP_BASE_PATH?>/app/js/functions/deleteTable.js';
 
     // Передаем данные полученные выше из БД
-    let suppliers = <?=$json?>;
+    let customers = <?=$json?>;
     // Ренедерим таблицу
-    let table = new RenderTableSuppliers(4, suppliers).renderTable();
+    let table = new RenderTableCustomers(4, customers).renderTable();
 
     // Добавляем отрисовку таблицы в зависимости от выбранного числа в select
     const size_charger = document.querySelector('.js-size-charger');
@@ -81,7 +81,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Suppliers</sp
       // Стираем содержимое таблицы
       deleteTable();
       // Рендерим её заново
-      table = new RenderTableSuppliers(amtRowInTable, suppliers).renderTable();
+      table = new RenderTableCustomers(amtRowInTable, customers).renderTable();
     });
 
     // Получаем введенное значение из полей поиска и select
@@ -92,13 +92,13 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Suppliers</sp
       const selected_column = option.value;
       const entered_text = text.value;
 
-      let data = sliceTable(suppliers, entered_text, selected_column);
+      let data = sliceTable(customers, entered_text, selected_column);
 
       const amtRowInTable = Number(size_charger.value);
       // Стираем содержимое таблицы
       deleteTable();
       // Рендерим её заново
-      table = new RenderTableSuppliers(amtRowInTable, data).renderTable();
+      table = new RenderTableCustomers(amtRowInTable, data).renderTable();
     });
 
     const refresh_button = document.querySelector('.js-refresh-button');
@@ -107,7 +107,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Suppliers</sp
       // Стираем содержимое таблицы
       deleteTable();
       // Рендерим её заново
-      table = new RenderTableSuppliers(amtRowInTable, suppliers).renderTable();
+      table = new RenderTableCustomers(amtRowInTable, customers).renderTable();
     });
   </script>
 

@@ -25,7 +25,7 @@ class RenderTable {
     // Вставка стрелки для пагинации слева
     let li = document.createElement('li');
     li.addEventListener('click', () => {
-      this.#renderPreviousData();
+      this.renderPreviousData();
     });
     li.innerHTML = "&laquo;";
     this.pagination.prepend(li);
@@ -33,7 +33,7 @@ class RenderTable {
     // Вставка стрелки для пагинации справа
     li = document.createElement('li');
     li.addEventListener('click', () => {
-      this.#renderNextData();
+      this.renderNextData();
     });
     li.innerHTML = "&raquo;";
     this.pagination.appendChild(li);
@@ -89,7 +89,7 @@ class RenderTable {
       for (const info in record) {
         if (info === 'created_at') {
           // Создает в элементе td два divа для create_at и updated_at
-          this.#renderDate(record, tr);
+          this.renderDate(record, tr);
           // Создает в элементе td два divа для create_at и updated_at
           break;
         }
@@ -104,7 +104,7 @@ class RenderTable {
     }
   }
 
-  #renderDate(record, tr) {
+  renderDate(record, tr) {
     let td = document.createElement('td');
     let div = document.createElement('div');
 
@@ -138,7 +138,7 @@ class RenderTable {
   }
   
   // Метод для правой стрелки в пагинации
-  #renderNextData() {
+  renderNextData() {
     let active = document.querySelector('#pagination li.active');
     const num = Number(active.innerHTML);
     if (num < this.liObjects.length) {
@@ -147,7 +147,7 @@ class RenderTable {
   }
   
   // Метод для левой стрелки в пагинации
-  #renderPreviousData() {
+  renderPreviousData() {
     let active = document.querySelector('#pagination li.active');
     const num = Number(active.innerHTML);
     if (num != 1) {
