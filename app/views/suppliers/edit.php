@@ -15,9 +15,9 @@ $link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Edit Supplier</s
       <label for="address" class="form-label">Address:</label>
       <input type="text" class="form-control" id="address" name="address" value="<?= $supplier['address'] ?>">
     </div>
-    <div class="stock-input">
-      <label for="telephone">Stock:</label>
-      <input type="number" id="telephone" name="telephone" value="<?= $supplier['telephone'] ?>">
+    <div class="telephone-input">
+      <label for="telephone">Telephone:</label>
+      <input type="text" id="telephone" name="telephone" value="<?= $supplier['telephone'] ?>">
     </div>
     <input class="submit-button" type="submit" value="Edit Supplier">
   </form>

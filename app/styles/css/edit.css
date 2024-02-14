@@ -1,4 +1,4 @@
-.create-form {
+.edit-form {
   position: relative;
   z-index: 400;
   background-color: white;
@@ -9,12 +9,12 @@
   margin-right: 35px;
   padding-left: 20px;
 }
-.create-form form > div > label {
+.edit-form form > div > label {
   display: block;
   font-family: Roboto, Arial;
   font-size: 28px;
 }
-.create-form form > div > input {
+.edit-form form > div > input {
   margin-right: 6px;
   padding: 8px;
   padding-left: 15px;
@@ -25,7 +25,7 @@
   margin-top: 6px;
   font-size: 20px;
 }
-.create-form .submit-button {
+.edit-form .submit-button {
   font-size: 18px;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -35,23 +35,20 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.create-form .submit-button:hover {
+.edit-form .submit-button:hover {
   filter: brightness(90%);
 }
 
-.create-form .name-input,
-.create-form .brand-input,
-.create-form .stock-input,
-.create-form .telephone-input {
+.edit-form .name-input,
+.edit-form .brand-input,
+.edit-form .stock-input {
   padding-top: 25px;
 }
 
-.create-form .name-input input,
-.create-form .brand-input input,
-.create-form .telephone-input input {
+.edit-form .name-input input,
+.edit-form .brand-input input {
   width: 600px;
 }
-.create-form .stock-input input {
+.edit-form .stock-input input {
   width: 100px
 }
-

@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="http://localhost/<?= APP_BASE_PATH ?>/app/styles/css/nav-sidebar.css">
   <link rel="stylesheet" href="http://localhost/<?= APP_BASE_PATH ?>/app/styles/css/table.css">
   <link rel="stylesheet" href="http://localhost/<?= APP_BASE_PATH ?>/app/styles/css/create.css">
+  <link rel="stylesheet" href="http://localhost/<?= APP_BASE_PATH ?>/app/styles/css/edit.css">
   
   <link rel="stylesheet" href="http://localhost/<?= APP_BASE_PATH ?>/app/styles/font-awesome/css/font-awesome.min.css">
 </head>

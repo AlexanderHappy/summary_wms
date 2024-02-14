@@ -15,7 +15,7 @@ $link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Master of Suppli
       <label for="address" class="form-label">Address:</label>
       <input type="text" class="form-control" id="address" name="address" value="Not Indicated">
     </div>
-    <div class="stock-input">
+    <div class="telephone-input">
       <label for="telephone">Telephone:</label>
       <input type="text" id="telephone" name="telephone" value="Not Indicated">
     </div>

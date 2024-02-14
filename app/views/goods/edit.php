@@ -5,7 +5,7 @@ $info = 'Edit Form:';
 $link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Edit Good</span>";
 ?>
 
-<div class="create-form">
+<div class="edit-form">
   <form method="POST" action="/<?= APP_BASE_PATH ?>/goods/update/<?= $good['id'] ?>">
     <div class="name-input">
       <label for="name" class="form-label">Name of new Good:</label>

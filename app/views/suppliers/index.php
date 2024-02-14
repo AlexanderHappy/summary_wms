@@ -66,8 +66,8 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Goods</span>"
 
   <script type="module">
     import { RenderTableSuppliers } from '/<?= APP_BASE_PATH?>/app/js/Classes/RenderTableSuppliers.js';
-    import { SliceTable } from '/<?= APP_BASE_PATH?>/app/js/Classes/SliceTable.js';
-    import { deleteTable } from '/<?= APP_BASE_PATH?>/app/js/Functions/deleteTable.js';
+    import { sliceTable } from '/<?= APP_BASE_PATH?>/app/js/functions/sliceTable.js';
+    import { deleteTable } from '/<?= APP_BASE_PATH?>/app/js/functions/deleteTable.js';
 
     // Передаем данные полученные выше из БД
     let suppliers = <?=$json?>;
@@ -92,7 +92,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Goods</span>"
       const selected_column = option.value;
       const entered_text = text.value;
 
-      let data = new SliceTable(suppliers, entered_text, selected_column).getNewData();
+      let data = sliceTable(suppliers, entered_text, selected_column);
 
       const amtRowInTable = Number(size_charger.value);
       // Стираем содержимое таблицы

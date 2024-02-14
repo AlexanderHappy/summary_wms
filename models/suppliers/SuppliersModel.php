@@ -27,7 +27,7 @@ class SuppliersModel
       `address` VARCHAR(255) DEFAULT 'Not Indicated',
       `telephone` VARCHAR(255) DEFAULT 'Not Indicated',
       `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
-      `update_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
       PRIMARY KEY (`id`)
     )";
 
