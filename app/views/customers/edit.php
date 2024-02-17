@@ -6,10 +6,10 @@ $link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Edit Customer</s
 ?>
 
 <div class="create-form">
-  <form method="POST" action="/<?= APP_BASE_PATH ?>/customers/update/<?= $customer['id'] ?>">
+  <form method="POST" action="/<?= APP_BASE_PATH ?>/customers/update/<?= $customer['customerId'] ?>">
     <div class="name-input">
       <label for="name" class="form-label">Name of new Supplier:</label>
-      <input type="text" class="form-control" id="name" name="name" value="<?= $customer['name'] ?>">
+      <input type="text" class="form-control" id="name" name="name" value="<?= $customer['customer_name'] ?>">
     </div>
     <div class="brand-input">
       <label for="address" class="form-label">Address:</label>

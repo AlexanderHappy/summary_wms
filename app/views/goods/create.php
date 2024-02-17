@@ -9,15 +9,15 @@ $link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Master of Goods<
   <form method="POST" action="/<?= APP_BASE_PATH ?>/goods/store">
     <div class="name-input">
       <label for="name" class="form-label">Name of new Good:</label>
-      <input type="text" class="form-control" id="name" name="name">
+      <input type="text" class="form-control" id="name" name="name" value="Not indicated">
     </div>
     <div class="brand-input">
       <label for="brand" class="form-label">Brand:</label>
-      <input type="text" class="form-control" id="brand" name="brand">
+      <input type="text" class="form-control" id="brand" name="brand" value="Not indicated">
     </div>
     <div class="stock-input">
       <label for="stock">Stock:</label>
-      <input type="number" id="stock" name="stock" min="0">
+      <input type="number" id="stock" name="stock" min="0" value="0">
     </div>
     <input class="submit-button" type="submit" value="Add new Good">
   </form>

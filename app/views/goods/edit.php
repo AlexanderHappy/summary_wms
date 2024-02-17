@@ -6,10 +6,10 @@ $link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Edit Good</span>
 ?>
 
 <div class="edit-form">
-  <form method="POST" action="/<?= APP_BASE_PATH ?>/goods/update/<?= $good['id'] ?>">
+  <form method="POST" action="/<?= APP_BASE_PATH ?>/goods/update/<?= $good['goodId'] ?>">
     <div class="name-input">
       <label for="name" class="form-label">Name of new Good:</label>
-      <input type="text" class="form-control" id="name" name="name" value="<?= $good['name'] ?>">
+      <input type="text" class="form-control" id="name" name="name" value="<?= $good['good_name'] ?>">
     </div>
     <div class="brand-input">
       <label for="brand" class="form-label">Brand:</label>

@@ -6,10 +6,10 @@ class Router
 {
   private $routes = [
     '/^\/' . APP_BASE_PATH . '\/?$/' => ['controller' => 'home\\HomeController', 'action' => 'index'],
-    '/^\/' . APP_BASE_PATH . '\/goods(\/(?P<action>[a-z]+)(\/(?P<id>\d+))?)?$/' => ['controller' => 'goods\\GoodsController'],
-    '/^\/' . APP_BASE_PATH . '\/suppliers(\/(?P<action>[a-z]+)(\/(?P<id>\d+))?)?$/' => ['controller' => 'suppliers\\SuppliersController'],
-    '/^\/' . APP_BASE_PATH . '\/customers(\/(?P<action>[a-z]+)(\/(?P<id>\d+))?)?$/' => ['controller' => 'customers\\CustomersController'],
-    '/^\/' . APP_BASE_PATH . '\/incomings(\/(?P<action>[a-z]+)(\/(?P<id>\d+))?)?$/' => ['controller' => 'incomings\\IncomingsController'],
+    '/^\/' . APP_BASE_PATH . '\/goods(\/(?P<action>[a-z]+)(\/(?P<goodId>\d+))?)?$/' => ['controller' => 'goods\\GoodsController'],
+    '/^\/' . APP_BASE_PATH . '\/suppliers(\/(?P<action>[a-z]+)(\/(?P<supplierId>\d+))?)?$/' => ['controller' => 'suppliers\\SuppliersController'],
+    '/^\/' . APP_BASE_PATH . '\/customers(\/(?P<action>[a-z]+)(\/(?P<customerId>\d+))?)?$/' => ['controller' => 'customers\\CustomersController'],
+    '/^\/' . APP_BASE_PATH . '\/incomings(\/(?P<action>[a-z]+)(\/(?P<incomingId>\d+))?)?$/' => ['controller' => 'incomings\\IncomingsController'],
   ];
 
   public function run()

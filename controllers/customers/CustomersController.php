@@ -38,7 +38,7 @@ class CustomersController
   public function edit($params)
   {
     $customersModel = new CustomersModel();
-    $customer = $customersModel->read($params['customer_id']);
+    $customer = $customersModel->read($params['customerId']);
 
     include 'app/views/customers/edit.php';
   }
@@ -46,7 +46,7 @@ class CustomersController
   public function update($params)
   {
     $customersModel = new CustomersModel();
-    $customersModel->update($params['customer_id'], $_POST);
+    $customersModel->update($params['customerId'], $_POST);
 
     $path = '/' . APP_BASE_PATH . '/customers';
     header("Location: $path");
@@ -55,7 +55,7 @@ class CustomersController
   public function delete($params)
   {
     $customersModel = new CustomersModel();
-    $customersModel->delete($params['customer_id']);
+    $customersModel->delete($params['customerId']);
 
     $path = '/' . APP_BASE_PATH . '/customers';
     header("Location: $path");

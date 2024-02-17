@@ -22,14 +22,14 @@ class SuppliersModel
   private function createTable()
   {
     $suppliersTableCreateQuery = "CREATE TABLE IF NOT EXISTS `suppliers` (
-      `supplier_id` INT NOT NULL AUTO_INCREMENT,
-      `name` VARCHAR(255) DEFAULT 'Not Indicated',
+      `supplierId` INT NOT NULL AUTO_INCREMENT,
+      `supplier_name` VARCHAR(255) DEFAULT 'Not Indicated',
       `address` VARCHAR(255) DEFAULT 'Not Indicated',
       `telephone` VARCHAR(255) DEFAULT 'Not Indicated',
       `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
       `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-      PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB";
+      PRIMARY KEY (`supplierId`)
+    ) ENGINE=INNODB";
 
     try {
       $this->db->exec($suppliersTableCreateQuery);
@@ -61,7 +61,7 @@ class SuppliersModel
     $address = $data['address'];
     $telephone = $data['telephone'];
 
-    $query = 'INSERT INTO `suppliers` (name, address, telephone) VALUE (?,?,?)';
+    $query = 'INSERT INTO `suppliers` (supplier_name, address, telephone) VALUE (?,?,?)';
 
     try {
       $stmt = $this->db->prepare($query);
@@ -75,7 +75,7 @@ class SuppliersModel
 
   public function read($id)
   {
-    $query = 'SELECT * FROM `suppliers` WHERE supplier_id = ?';
+    $query = 'SELECT * FROM `suppliers` WHERE supplierId = ?';
 
     try {
       $stmt = $this->db->prepare($query);
@@ -94,7 +94,7 @@ class SuppliersModel
     $address = $data['address'];
     $telephone = $data['telephone'];
 
-    $query = 'UPDATE `suppliers` SET name = ?, address = ?, telephone = ? WHERE supplier_id = ?';
+    $query = 'UPDATE `suppliers` SET supplier_name = ?, address = ?, telephone = ? WHERE supplierId = ?';
 
     try {
       $stmt = $this->db->prepare($query);
@@ -108,7 +108,7 @@ class SuppliersModel
 
   public function delete($id)
   {
-    $query = 'DELETE FROM `suppliers` WHERE supplier_id = ?';
+    $query = 'DELETE FROM `suppliers` WHERE supplierId = ?';
 
     try {
       $stmt = $this->db->prepare($query);

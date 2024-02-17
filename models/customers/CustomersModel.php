@@ -22,19 +22,19 @@ class CustomersModel
   private function createTable()
   {
     $customersTableCreateQuery = "CREATE TABLE IF NOT EXISTS `customers` (
-      `customer_id` INT NOT NULL AUTO_INCREMENT,
-      `name` VARCHAR(255) DEFAULT 'Not Indicated',
+      `customerId` INT NOT NULL AUTO_INCREMENT,
+      `customer_name` VARCHAR(255) DEFAULT 'Not Indicated',
       `address` VARCHAR(255) DEFAULT 'Not Indicated',
       `telephone` VARCHAR(255) DEFAULT 'Not Indicated',
       `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
       `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-      PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB";
+      PRIMARY KEY (`customerId`)
+    ) ENGINE=INNODB";
 
     try {
       $this->db->exec($customersTableCreateQuery);
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
@@ -50,7 +50,7 @@ class CustomersModel
       }
       return $customers;
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
@@ -61,21 +61,21 @@ class CustomersModel
     $address = $data['address'];
     $telephone = $data['telephone'];
 
-    $query = 'INSERT INTO `customers` (name, address, telephone) VALUE (?,?,?)';
+    $query = 'INSERT INTO `customers` (customer_name, address, telephone) VALUE (?,?,?)';
 
     try {
       $stmt = $this->db->prepare($query);
       $stmt->execute([$name, $address, $telephone]);
       return true;
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
 
   public function read($id)
   {
-    $query = 'SELECT * FROM `customers` WHERE customer_id = ?';
+    $query = 'SELECT * FROM `customers` WHERE customerId = ?';
 
     try {
       $stmt = $this->db->prepare($query);
@@ -83,7 +83,7 @@ class CustomersModel
       $res = $stmt->fetch(\PDO::FETCH_ASSOC);
       return $res;
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
@@ -94,27 +94,27 @@ class CustomersModel
     $address = $data['address'];
     $telephone = $data['telephone'];
 
-    $query = 'UPDATE `customers` SET name = ?, address = ?, telephone = ? WHERE customer_id = ?';
+    $query = 'UPDATE `customers` SET customer_name = ?, address = ?, telephone = ? WHERE customerId = ?';
 
     try {
       $stmt = $this->db->prepare($query);
       $stmt->execute([$name, $address, $telephone, $id]);
       return true;
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
 
   public function delete($id)
   {
-    $query = 'DELETE FROM `customers` WHERE customer_id = ?';
+    $query = 'DELETE FROM `customers` WHERE customerId = ?';
 
     try {
       $stmt = $this->db->prepare($query);
       $stmt->execute([$id]);
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }

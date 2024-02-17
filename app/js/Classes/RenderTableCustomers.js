@@ -53,7 +53,7 @@ class RenderTableCustomers extends RenderTable {
       for (const info in customer) {
         if (info === 'created_at') {
           // Создает в элементе td два divа для create_at и updated_at
-          this.#renderDate(customer, tr);
+          super.renderDate(customer, tr);
           // Создает в элементе td два divа для create_at и updated_at
           break;
         }
@@ -68,20 +68,6 @@ class RenderTableCustomers extends RenderTable {
     }
   }
 
-  #renderDate(customer, tr) {
-    let td = document.createElement('td');
-    let div = document.createElement('div');
-
-    div.innerHTML = `Created At: ${customer['created_at']}`;
-    td.appendChild(div);
-    tr.appendChild(td);
-    
-    div = document.createElement('div');
-    div.innerHTML = `Updated At: ${customer['updated_at']}`;
-    td.appendChild(div);
-    tr.appendChild(td);
-  }
-
   #renderLink(customer, tr) {
     let td = document.createElement('td');
     td.classList.add('link-td');
@@ -89,18 +75,19 @@ class RenderTableCustomers extends RenderTable {
     let a = document.createElement('a');
     a.classList.add('edit-link');
     a.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
-    a.href = `/summary_wms/customers/edit/${customer['id']}`;
+    a.href = `/summary_wms/customers/edit/${customer['customerId']}`;
     td.appendChild(a);
     tr.appendChild(td);
     
     a = document.createElement('a');
     a.classList.add('delete-link');
     a.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
-    a.href = `/summary_wms/customers/delete/${customer['id']}`;
+    a.href = `/summary_wms/customers/delete/${customer['customerId']}`;
     td.appendChild(a);
     tr.appendChild(td);
   }
-
+  
+  // Метод для правой стрелки в пагинации
   #renderNextData() {
     let active = document.querySelector('#pagination li.active');
     const num = Number(active.innerHTML);

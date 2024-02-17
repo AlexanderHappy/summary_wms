@@ -1,7 +1,7 @@
 import { RenderTable } from "./RenderTable.js";
-export { RenderTableMasterOfGoods };
+export { RenderTableIncomings };
 
-class RenderTableMasterOfGoods extends RenderTable {
+class RenderTableIncomings extends RenderTable {
   #renderPagination() {
     for (let pageNum = 1; pageNum <= this.numbersPages; pageNum++) {
       let li = document.createElement('li');
@@ -35,35 +35,14 @@ class RenderTableMasterOfGoods extends RenderTable {
 
   #renderTHead() {
     let trTHead = this.table.createTHead().insertRow();
-    let namesOfColums = Object.keys(this.json_data[0]);
+    let nameOfColumns = ['id', 'Goods', 'Supplier', 'Date', 'Actions'];
 
-    for (const name of namesOfColums) {
-      if (name === 'created_at') {
-        let th = document.createElement('th');
-        th.innerHTML = 'Date';
-        trTHead.appendChild(th);
-        
-        th = document.createElement('th');
-        th.classList.add('action-head');
-        th.innerHTML = 'Action';
-        trTHead.appendChild(th);
-        break;
-      }
-
-      if (name === 'stock') {
-        let th = document.createElement('th');
-        const capitalizedWord = name[0].toUpperCase() + name.slice(1);
-        th.innerHTML = capitalizedWord;
-        th.classList.add('stock-head');
-        trTHead.appendChild(th);
-        continue;
-      }
-
+    for (const name of nameOfColumns) {
       let th = document.createElement('th');
-      const capitalizedWord = name[0].toUpperCase() + name.slice(1);
-      th.innerHTML = capitalizedWord;
+      th.innerHTML = name;
       trTHead.appendChild(th);
     }
+    
   }
 
   #renderTBody(liObject) {
@@ -81,53 +60,93 @@ class RenderTableMasterOfGoods extends RenderTable {
     const data = this.json_data.slice(start, end);
     this.tbody.innerHTML = '';
 
-    for (const good of data) {
+    for (const incoming of data) {
       let tr = this.tbody.insertRow();
-      for (const info in good) {
+      for (const info in incoming) {
         if (info === 'created_at') {
           // Создает в элементе td два divа для create_at и updated_at
-          super.renderDate(good, tr);
+          super.renderDate(incoming, tr);
           // Создает в элементе td два divа для create_at и updated_at
           break;
         }
 
-        if (info === 'stock') {
-          let td = document.createElement('td');
-          td.classList.add('stock');
-          td.innerHTML = good[info];
-          tr.appendChild(td);
+        if (info === 'good_name') {
+          this.#renderGood(incoming, tr);
+          continue;
+        }
+
+        if (info === 'supplier_name') {
+          this.#renderSupplier(incoming, tr);
+          continue;
+        }
+
+        if (info === 'brand' || info === 'address' || info === 'telephone') {
           continue;
         }
 
         let td = document.createElement('td');
-        td.innerHTML = good[info];
+        td.innerHTML = incoming[info];
         tr.appendChild(td);
       }
       // В конце каждой строки создает кнопки Action - Edit и Delete
-      this.#renderLink(good, tr);
+      this.#renderLink(incoming, tr);
       // В конце каждой строки создает кнопки Action - Edit и Delete
     }
   }
 
-  #renderLink(good, tr) {
+  #renderGood(incoming, tr) {
+    let td = document.createElement('td');
+    let div = document.createElement('div');
+
+    div.innerHTML = `Name: ${incoming['good_name']}`;
+    td.appendChild(div);
+    tr.appendChild(td);
+    
+    div = document.createElement('div');
+    div.innerHTML = `Brand: ${incoming['brand']}`;
+    td.appendChild(div);
+    tr.appendChild(td);
+  }
+
+  #renderSupplier(incoming, tr) {
+    let td = document.createElement('td');
+    let div = document.createElement('div');
+
+    div.innerHTML = `Name: ${incoming['supplier_name']}`;
+    td.appendChild(div);
+    tr.appendChild(td);
+    
+    div = document.createElement('div');
+    div.innerHTML = `Address: ${incoming['address']}`;
+    td.appendChild(div);
+    tr.appendChild(td);
+
+    div = document.createElement('div');
+    div.innerHTML = `Phone: ${incoming['telephone']}`;
+    td.appendChild(div);
+    tr.appendChild(td);
+  }
+
+  #renderLink(incoming, tr) {
     let td = document.createElement('td');
     td.classList.add('link-td');
 
     let a = document.createElement('a');
     a.classList.add('edit-link');
     a.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
-    a.href = `/summary_wms/goods/edit/${good['goodId']}`;
+    a.href = `/summary_wms/incomings/edit/${incoming['incomingId']}`;
     td.appendChild(a);
     tr.appendChild(td);
     
     a = document.createElement('a');
     a.classList.add('delete-link');
     a.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
-    a.href = `/summary_wms/goods/delete/${good['goodId']}`;
+    a.href = `/summary_wms/incomings/delete/${incoming['incomingId']}`;
     td.appendChild(a);
     tr.appendChild(td);
   }
 
+  // Метод для правой стрелки в пагинации
   #renderNextData() {
     let active = document.querySelector('#pagination li.active');
     const num = Number(active.innerHTML);
@@ -144,7 +163,7 @@ class RenderTableMasterOfGoods extends RenderTable {
       this.#renderTBody(this.liObjects[num - 2]);
     }
   }
-  
+
   renderTable() {
     this.#renderTHead();
     this.#renderPagination();

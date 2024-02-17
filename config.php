@@ -1,4 +1,16 @@
 <?php
+function tt($str){
+  echo "<pre>";
+    print_r($str);
+  echo "</pre>";
+}
+function tte($str){
+  echo "<pre>";
+    print_r($str);
+  echo "</pre>";
+  exit();
+}
+
 
 define('APP_BASE_PATH', 'summary_wms');
 

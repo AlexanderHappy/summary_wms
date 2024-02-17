@@ -37,7 +37,7 @@ class GoodsController
   public function edit($params)
   {
     $goodsModel = new GoodsModel();
-    $good = $goodsModel->read($params['id']);
+    $good = $goodsModel->read($params['goodId']);
 
     include 'app/views/goods/edit.php';
   }
@@ -45,7 +45,7 @@ class GoodsController
   public function update($params)
   {
     $goodsModel = new GoodsModel();
-    $goodsModel->update($params['id'], $_POST);
+    $goodsModel->update($params['goodId'], $_POST);
 
     $path = '/' . APP_BASE_PATH . '/goods';
     header("Location: $path");
@@ -54,7 +54,7 @@ class GoodsController
   public function delete($params)
   {
     $goodsModel = new GoodsModel();
-    $goodsModel->delete($params['id']);
+    $goodsModel->delete($params['goodId']);
 
     $path = '/' . APP_BASE_PATH . '/goods';
     header("Location: $path");

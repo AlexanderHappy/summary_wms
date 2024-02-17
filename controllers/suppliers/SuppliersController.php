@@ -37,7 +37,7 @@ class SuppliersController
   public function edit($params)
   {
     $suppliersModel = new SuppliersModel();
-    $supplier = $suppliersModel->read($params['id']);
+    $supplier = $suppliersModel->read($params['supplierId']);
 
     include 'app/views/suppliers/edit.php';
   }
@@ -45,7 +45,7 @@ class SuppliersController
   public function update($params)
   {
     $suppliersModel = new SuppliersModel();
-    $suppliersModel->update($params['id'], $_POST);
+    $suppliersModel->update($params['supplierId'], $_POST);
 
     $path = '/' . APP_BASE_PATH . '/suppliers';
     header("Location: $path");
@@ -54,7 +54,7 @@ class SuppliersController
   public function delete($params)
   {
     $suppliersModel = new SuppliersModel();
-    $suppliersModel->delete($params['id']);
+    $suppliersModel->delete($params['supplierId']);
 
     $path = '/' . APP_BASE_PATH . '/suppliers';
     header("Location: $path");

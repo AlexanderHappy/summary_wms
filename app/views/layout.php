@@ -57,7 +57,7 @@
             <i class="fa fa-angle-right" aria-hidden="true"></i>
             <ul class="content">
               <li>
-                <a class="item-link" href="#">
+                <a class="item-link" href="/<?= APP_BASE_PATH ?>/incomings">
                   <i class="fa fa-angle-right" aria-hidden="true"></i>
                   <span>Incoming Goods</span>
                 </a>

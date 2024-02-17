@@ -89,14 +89,14 @@ class RenderTableSuppliers extends RenderTable {
     let a = document.createElement('a');
     a.classList.add('edit-link');
     a.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
-    a.href = `/summary_wms/suppliers/edit/${supplier['id']}`;
+    a.href = `/summary_wms/suppliers/edit/${supplier['supplierId']}`;
     td.appendChild(a);
     tr.appendChild(td);
     
     a = document.createElement('a');
     a.classList.add('delete-link');
     a.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
-    a.href = `/summary_wms/suppliers/delete/${supplier['id']}`;
+    a.href = `/summary_wms/suppliers/delete/${supplier['supplierId']}`;
     td.appendChild(a);
     tr.appendChild(td);
   }
