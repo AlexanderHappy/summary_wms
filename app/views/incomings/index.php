@@ -61,7 +61,6 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Incomings</sp
 
   <!-- Данные из БД переводим в JSON для передачи их JS-у -->
   <?php $json = json_encode($incomings); ?> 
-  <!-- Отсюда продолжить -->
 
   <script type="module">
     import { RenderTableIncomings } from '/<?= APP_BASE_PATH?>/app/js/Classes/RenderTableIncomings.js';
