@@ -35,14 +35,21 @@ class RenderTableIncomings extends RenderTable {
 
   #renderTHead() {
     let trTHead = this.table.createTHead().insertRow();
-    let nameOfColumns = ['id', 'Goods', 'Supplier', 'Date', 'Actions'];
+    let nameOfColumns = ['id', 'Goods', 'Suppliers', 'Total', 'Date', 'Actions'];
 
     for (const name of nameOfColumns) {
+      if (name === 'Total') {
+        let th = document.createElement('th');
+        th.innerHTML = name;
+        th.classList.add('total-head');
+        trTHead.appendChild(th);
+        continue;
+      }
+
       let th = document.createElement('th');
       th.innerHTML = name;
       trTHead.appendChild(th);
     }
-    
   }
 
   #renderTBody(liObject) {
@@ -81,6 +88,14 @@ class RenderTableIncomings extends RenderTable {
         }
 
         if (info === 'brand' || info === 'address' || info === 'telephone') {
+          continue;
+        }
+
+        if (info === 'total') {
+          let td = document.createElement('td');
+          td.classList.add('total');
+          td.innerHTML = incoming[info];
+          tr.appendChild(td);
           continue;
         }
 

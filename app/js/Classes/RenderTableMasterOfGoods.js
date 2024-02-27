@@ -35,9 +35,9 @@ class RenderTableMasterOfGoods extends RenderTable {
 
   #renderTHead() {
     let trTHead = this.table.createTHead().insertRow();
-    let namesOfColums = Object.keys(this.json_data[0]);
+    let nameOfColumns = ['id', 'Goods', 'Brand', 'Stock', 'Date', 'Actions'];
 
-    for (const name of namesOfColums) {
+    for (const name of nameOfColumns) {
       if (name === 'created_at') {
         let th = document.createElement('th');
         th.innerHTML = 'Date';
@@ -50,7 +50,7 @@ class RenderTableMasterOfGoods extends RenderTable {
         break;
       }
 
-      if (name === 'stock') {
+      if (name === 'Stock') {
         let th = document.createElement('th');
         const capitalizedWord = name[0].toUpperCase() + name.slice(1);
         th.innerHTML = capitalizedWord;

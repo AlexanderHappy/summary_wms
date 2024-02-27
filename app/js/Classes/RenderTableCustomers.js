@@ -32,6 +32,17 @@ class RenderTableCustomers extends RenderTable {
       });
     });
   }
+
+  #renderTHead() {
+    let trTHead = this.table.createTHead().insertRow();
+    let nameOfColumns = ['id', 'Customers', 'Address', 'Telephone', 'Date', 'Actions'];
+
+    for (const name of nameOfColumns) {
+      let th = document.createElement('th');
+      th.innerHTML = name;
+      trTHead.appendChild(th);
+    }
+  }
   
   #renderTBody(liObject) {
     let active = document.querySelector('#pagination li.active');
@@ -106,7 +117,7 @@ class RenderTableCustomers extends RenderTable {
   }
   
   renderTable() {
-    super.renderTHead();
+    this.#renderTHead();
     this.#renderPagination();
     // this.liObjects[0] передаем для отрисовки первых строк таблицы из БД при вызове метода
     this.#renderTBody(this.liObjects[0]);

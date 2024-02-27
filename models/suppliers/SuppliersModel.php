@@ -34,7 +34,7 @@ class SuppliersModel
     try {
       $this->db->exec($suppliersTableCreateQuery);
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
@@ -50,7 +50,23 @@ class SuppliersModel
       }
       return $suppliers;
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
+      return false;
+    }
+  }
+
+  public function readAllWithException($id)
+  { 
+    try {
+      $stmt = $this->db->query("SELECT * FROM `suppliers` WHERE supplierId != $id");
+
+      $suppliers = Array();
+      while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+        array_push($suppliers, $row);
+      }
+      return $suppliers;
+    } catch (\PDOException $exp) {
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
@@ -68,7 +84,7 @@ class SuppliersModel
       $stmt->execute([$name, $address, $telephone]);
       return true;
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
@@ -83,7 +99,7 @@ class SuppliersModel
       $res = $stmt->fetch(\PDO::FETCH_ASSOC);
       return $res;
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
@@ -101,7 +117,7 @@ class SuppliersModel
       $stmt->execute([$name, $address, $telephone, $id]);
       return true;
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
@@ -114,7 +130,7 @@ class SuppliersModel
       $stmt = $this->db->prepare($query);
       $stmt->execute([$id]);
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }

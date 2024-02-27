@@ -1,14 +1,14 @@
 <?php
 ob_start();
-$title = 'Create new Incomings';
+$title = 'Create new Outgoing';
 $info = 'Create Form:';
-$link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Master of Incomings</span>";
+$link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Master of Outgoing</span>";
 ?>
 
 <div class="create-form">
-  <form method="POST" action="/<?= APP_BASE_PATH ?>/incomings/store">
+  <form method="POST" action="/<?= APP_BASE_PATH ?>/outgoings/store">
     
-    <div class="good-incoming-input">
+    <div class="good-outgoing-input">
       <label for="good_name" class="form-label">Good Name:</label>
       <select name="good_id" id="good_id" required>
         <option value="" selected disabled hidden >Choose here</option>
@@ -20,23 +20,23 @@ $link = "<a href='/<?= APP_BASE_PATH ?>/'>Dashboard</a> / <span>Master of Incomi
       </select>
     </div>
 
-    <div class="supplier-incoming-input">
-      <label for="supplier_id" class="form-label">Supplier Name:</label>
-      <select name="supplier_id" id="supplier_id" required>
+    <div class="supplier-outgoing-input">
+      <label for="customer_id" class="form-label">Customer Name:</label>
+      <select name="customer_id" id="customer_id" required>
         <option value="" selected disabled hidden >Choose here</option>
 
-        <?php foreach ($suppliers as $supllier): ?>
-          <option value="<?= $supllier['supplierId'] ?>">Name: <?= $supllier['supplier_name'] ?> - Address: <?= $supllier['address'] ?></option>
+        <?php foreach ($customers as $customer): ?>
+          <option value="<?= $customer['customerId'] ?>">Name: <?= $customer['customer_name'] ?> - Address: <?= $customer['address'] ?></option>
         <?php endforeach ?>
         
       </select>
     </div>
 
-    <div class="total-incoming-input">
+    <div class="total-outgoing-input">
       <label for="total">Total:</label>
       <input type="number" id="total" name="total" min="0" value="0">
     </div>
-    <input class="submit-button" type="submit" value="Add new Incomings">
+    <input class="submit-button" type="submit" value="Add new Outgoing">
   </form>
 </div>
 

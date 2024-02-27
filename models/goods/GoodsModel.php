@@ -56,6 +56,23 @@ class GoodsModel
     }
   }
 
+  public function readAllWithException($id)
+  {
+    try {
+      $stmt = $this->db->query("SELECT * FROM `goods` WHERE goodId != $id");
+
+      $goods = Array();
+      while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+        array_push($goods, $row);
+      }
+
+      return $goods;
+    } catch (\PDOException $exp) {
+      echo "Somethin goes wrong: " . $exp->getMessage();
+      return false;
+    }
+  }
+
   public function create($data)
   {
     $name = $data['name'];

@@ -14,7 +14,8 @@
   font-family: Roboto, Arial;
   font-size: 28px;
 }
-.edit-form form > div > input {
+.edit-form form > div > input,
+.edit-form form > div > select {
   margin-right: 6px;
   padding: 8px;
   padding-left: 15px;
@@ -50,5 +51,26 @@
   width: 600px;
 }
 .edit-form .stock-input input {
+  width: 100px
+}
+
+.edit-form div.good-incoming-input,
+.edit-form div.supplier-incoming-input,
+.edit-form div.total-incoming-input,
+.edit-form div.good-outgoing-input,
+.edit-form div.customer-outgoing-input,
+.edit-form div.total-outgoing-input {
+  padding-top: 25px;
+}
+
+.edit-form .good-incoming-input select,
+.edit-form .supplier-incoming-input select,
+.edit-from .good-outgoing-input,
+.edit-form .customer-outgoing-input {
+  width: 600px;
+}
+
+.edit-form .total-incoming-input input,
+.edit-from .total-outgoing-input {
   width: 100px
 }

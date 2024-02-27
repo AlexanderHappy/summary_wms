@@ -63,7 +63,7 @@
                 </a>
               </li>
               <li>
-                <a class="item-link" href="#">
+                <a class="item-link" href="/<?= APP_BASE_PATH ?>/outgoings">
                   <i class="fa fa-angle-right" aria-hidden="true"></i>
                   <span>Outgoing Goods</span>
                 </a>

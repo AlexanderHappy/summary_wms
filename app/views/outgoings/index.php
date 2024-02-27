@@ -1,14 +1,14 @@
 <?php
 ob_start();
-$title = 'Incomings Goods';
-$info = 'Informations about Incomings Goods:';
+$title = 'Outgoings Goods';
+$info = 'Informations about Outgoings Goods:';
 $project_name = APP_BASE_PATH;
-$link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Incomings</span>";
+$link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Outgoings</span>";
 ?>
   <div class="container">
     <div class="wrapper">        
       <p>
-        View Incomings
+        View Outgoings
       </p>
       <div class="search-option-bar">
         <div>
@@ -17,7 +17,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Incomings</sp
           </p>
           <select class="js-search-option">
             <option value="name">Name of Good</option>
-            <option value="address">Name of Supplier</option>
+            <option value="address">Name of Customer</option>
           </select>
           <input class="search-bar" type="search" id="search-string">
           <button class="js-submit-button">
@@ -49,10 +49,10 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Incomings</sp
           </ul>
         </div>
 
-        <a href="/<?= APP_BASE_PATH ?>/incomings/create" class="create-link">
+        <a href="/<?= APP_BASE_PATH ?>/outgoings/create" class="create-link">
           <button>
             <i class="fa fa-plus" aria-hidden="true"></i>
-            Add new Incoming
+            Add new Outgoing
           </button>
         </a>
       </div>
@@ -60,18 +60,18 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Incomings</sp
   </div>
 
   <!-- Данные из БД переводим в JSON для передачи их JS-у -->
-  <?php $json = json_encode($incomings); ?> 
+  <?php $json = json_encode($outgoings); ?> 
   <!-- Отсюда продолжить -->
 
   <script type="module">
-    import { RenderTableIncomings } from '/<?= APP_BASE_PATH?>/app/js/Classes/RenderTableIncomings.js';
+    import { RenderTableOutgoings } from '/<?= APP_BASE_PATH?>/app/js/Classes/RenderTableOutgoings.js';
     import { sliceTable } from '/<?= APP_BASE_PATH?>/app/js/functions/sliceTable.js';
     import { deleteTable } from '/<?= APP_BASE_PATH?>/app/js/functions/deleteTable.js';
 
     // Передаем данные полученные выше из БД
-    let incomings = <?=$json?>;
+    let outgoings = <?=$json?>;
     // Ренедерим таблицу
-    let table = new RenderTableIncomings(4, incomings).renderTable();
+    let table = new RenderTableOutgoings(4, outgoings).renderTable();
 
     // Добавляем отрисовку таблицы в зависимости от выбранного числа в select
     const size_charger = document.querySelector('.js-size-charger');
@@ -80,7 +80,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Incomings</sp
       // Стираем содержимое таблицы
       deleteTable();
       // Рендерим её заново
-      table = new RenderTableIncomings(amtRowInTable, incomings).renderTable();
+      table = new RenderTableOutgoings(amtRowInTable, outgoings).renderTable();
     });
 
     // Получаем введенное значение из полей поиска и select
@@ -91,13 +91,13 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Incomings</sp
       const selected_column = option.value;
       const entered_text = text.value;
 
-      let data = sliceTable(incomings, entered_text, selected_column);
+      let data = sliceTable(outgoings, entered_text, selected_column);
 
       const amtRowInTable = Number(size_charger.value);
       // Стираем содержимое таблицы
       deleteTable();
       // Рендерим её заново
-      table = new RenderTableIncomings(amtRowInTable, data).renderTable();
+      table = new RenderTableOutgoings(amtRowInTable, data).renderTable();
     });
 
     const refresh_button = document.querySelector('.js-refresh-button');
@@ -106,7 +106,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Incomings</sp
       // Стираем содержимое таблицы
       deleteTable();
       // Рендерим её заново
-      table = new RenderTableIncomings(amtRowInTable, incomings).renderTable();
+      table = new RenderTableOutgoings(amtRowInTable, outgoings).renderTable();
     });
   </script>
 

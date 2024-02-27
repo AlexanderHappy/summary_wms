@@ -17,10 +17,12 @@ thead {
   background-color: #f5f5f5;
 }
 .stock-head,
+.total-head,
 .action-head {
   text-align: center;
 }
-.stock {
+.stock,
+.total {
   color: red;
   text-align: center;
 }

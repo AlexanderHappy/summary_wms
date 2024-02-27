@@ -14,7 +14,8 @@
   font-family: Roboto, Arial;
   font-size: 28px;
 }
-.create-form form > div > input {
+.create-form form > div > input,
+.create-form form > div > select {
   margin-right: 6px;
   padding: 8px;
   padding-left: 15px;
@@ -51,7 +52,18 @@
 .create-form .telephone-input input {
   width: 600px;
 }
-.create-form .stock-input input {
-  width: 100px
+.create-form .stock-input input,
+.create-form .total-incoming-input input {
+  width: 100px;
 }
 
+.create-form div.good-incoming-input,
+.create-form div.supplier-incoming-input,
+.create-form div.total-incoming-input {
+  padding-top: 25px;
+}
+
+.create-form .good-incoming-input select,
+.create-form .supplier-incoming-input select {
+  width: 600px;
+}

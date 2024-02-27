@@ -55,6 +55,23 @@ class CustomersModel
     }
   }
 
+  public function readAllWithException($id)
+  {
+    try {
+      $stmt = $this->db->query("SELECT * FROM `customers` WHERE customerId != $id");
+
+      $customers = Array();
+      while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+        array_push($customers, $row);
+      }
+
+      return $customers;
+    } catch (\PDOException $exp) {
+      echo "Something goes wrong: " . $exp->getMessage();
+      return false;
+    }
+  }
+
   public function create($data)
   {
     $name = $data['name'];

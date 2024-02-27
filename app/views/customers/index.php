@@ -17,7 +17,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Customers</sp
             Search by:
           </p>
           <select class="js-search-option">
-            <option value="name">Name</option>
+            <option value="customer_name">Customer</option>
             <option value="address">Address</option>
             <option value="telephone">Telephone</option>
           </select>
@@ -90,7 +90,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Customers</sp
       const text = document.getElementById('search-string');
       const option = document.querySelector('.js-search-option');
       const selected_column = option.value;
-      const entered_text = text.value;
+      const entered_text = String(text.value);
 
       let data = sliceTable(customers, entered_text, selected_column);
 
