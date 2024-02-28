@@ -59,7 +59,7 @@ class IncomingsModel
 
       return $incomings_goods;
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }

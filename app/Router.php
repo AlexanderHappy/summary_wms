@@ -13,7 +13,7 @@ class Router
     '/^\/' . APP_BASE_PATH . '\/outgoings(\/(?P<action>[a-z]+)(\/(?P<outgoingId>\d+))?)?$/' => ['controller' => 'outgoings\\OutgoingsController'],
     '/^\/' . APP_BASE_PATH . '\/incomingsReport(\/(?P<action>[a-z]+))?$/' => ['controller' => 'incomingsReport\\IncomingsReportController'],
     '/^\/' . APP_BASE_PATH . '\/outgoingsReport(\/(?P<action>[a-z]+))?$/' => ['controller' => 'outgoingsReport\\OutgoingsReportController'],
-    '/^\/' . APP_BASE_PATH . '\/generatePDF\/?$/' => ['controller' => 'generatePDF\\GeneratePDFController'],
+    '/^\/' . APP_BASE_PATH . '\/incomingsGeneratePDF\/?$/' => ['controller' => 'incomingsGeneratePDF\\IncomingsGeneratePDFController'],
   ];
 
   public function run()

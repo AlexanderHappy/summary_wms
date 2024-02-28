@@ -11,7 +11,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Incomings Rep
       <canvas id="myChart" height="80"></canvas>
     </div>
     <div class="pdf-button-container">
-      <a href="/<?= APP_BASE_PATH ?>/generatePDF">
+      <a href="/<?= APP_BASE_PATH ?>/incomingsGeneratePDF">
         <button class="pdf-button" >
           Download Incoming Goods Report PDF
         </button>
