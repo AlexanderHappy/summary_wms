@@ -10,6 +10,13 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Incomings Rep
     <div class="wrapper">
       <canvas id="myChart" height="80"></canvas>
     </div>
+    <div class="pdf-button-container">
+      <a href="/<?= APP_BASE_PATH ?>/generatePDF">
+        <button class="pdf-button" >
+          Download Incoming Goods Report PDF
+        </button>
+      </a>
+    </div>
   </div>
 
   <!-- Данные из БД переводим в JSON для передачи их JS-у -->
@@ -37,7 +44,7 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Incomings Rep
         labels: namesOfGoods,
         datasets: [{
           label: 'Number of Incoming Items',
-          // Сюда подаём массив с цифрами заказов
+          // Сюда подаём массив с числом заказов
           data: totalOfGoods,
           borderWidth: 1
         }]
