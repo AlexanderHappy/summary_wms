@@ -10,8 +10,8 @@ class IncomingsGeneratePDFController
   {
     $incomingsPDFGenerateModel = new IncomingsPDFGenerateModel();
     $pdfData = $incomingsPDFGenerateModel->takeAll();
-
-    include 'app/action/generatePDF/generate-pdf.php';
+    
+    include 'app/action/generatePDF/incomingsGoods/generate-pdf.php';
   }
 }
 

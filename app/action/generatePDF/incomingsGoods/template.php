@@ -30,22 +30,42 @@
     img {
       width: 100px;
     }
+    .header td,
+    .header th {
+      border: none;
+    }
+    .paragraph-cell {
+      text-align: right;
+    }
   </style>
 </head>
 <body>
-  <img src="app/styles/picture/logo.png">
+  <table class="header">
+    <tr>
+      <td>
+        <img src="app/styles/picture/logo.png">
+        <p style="display: inline-block;">
+          CI-WMS
+        </p>
+      </td>
+      <td class="paragraph-cell">
+        <p style="font-family: Arial;">Information about Goods:</p>
+      </td>
+    </tr>
+  </table>
+  
   <table>
     <thead>
       <tr>
         <th>#</th>
         <th>Goods</th>
         <th>Suppliers</th>
-        <th>Total</th>
+        <th class="total">Total</th>
         <th>Date</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($pdfData as $key => $data): ?>
+      <?php foreach ($pdfData['data'] as $key => $data): ?>
         <tr>
           <td><?= $key + 1 ?></td>
           <td>
@@ -66,6 +86,10 @@
       <?php endforeach; ?>
     </tbody>
   </table>
+
+  <p style="font-family: Arial;">
+    Total amount of Incoming Goods: <span style="color: red;"><?= $pdfData['sum'] ?></span>
+  </p>
 </body>
 </html>
 

@@ -30,11 +30,13 @@ class IncomingsPDFGenerateModel
       );
 
       $incomings_goods = Array();
+      $totalAmount = 0;
       while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
         array_push($incomings_goods, $row);
+        $totalAmount += $row['total'];
       }
 
-      return $incomings_goods;
+      return ['data' => $incomings_goods, 'sum' => $totalAmount];
     } catch (\PDOException $exp) {
       echo "Something goes wrong: " . $exp->getMessage();
       return false;

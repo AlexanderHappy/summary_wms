@@ -3,11 +3,11 @@
 // tte($path);
 
 ob_start();
-require_once('app/action/generatePDF/template.php');
+require_once('app/action/generatePDF/incomingsGoods/template.php');
 $html = ob_get_contents();
 ob_end_clean();
 
-require_once 'vendor/autoload.php';
+require_once 'app/action/generatePDF/vendor/autoload.php';
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
