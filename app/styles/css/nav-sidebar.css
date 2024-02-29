@@ -12,6 +12,7 @@ body div.sidebar {
 body ul.sidebar-listmenu {
   list-style-type: none;
   color: white;
+  /* font-family: DejaVu Sans, sans-serif; */
   font-family: Roboto;
   padding-left: 0px;
 }

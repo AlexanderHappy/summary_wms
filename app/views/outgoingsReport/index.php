@@ -10,6 +10,14 @@ $link = "<a href='/$project_name/'>Dashboard</a> / <span>Master of Outgoings Rep
     <div class="wrapper">
       <canvas id="myChart" height="80"></canvas>
     </div>
+
+    <div class="pdf-button-container">
+      <a href="/<?= APP_BASE_PATH ?>/outgoingsGeneratePDF">
+        <button class="pdf-button" >
+          Download Outgoings Goods Report PDF
+        </button>
+      </a>
+    </div>
   </div>
 
   <!-- Данные из БД переводим в JSON для передачи их JS-у -->

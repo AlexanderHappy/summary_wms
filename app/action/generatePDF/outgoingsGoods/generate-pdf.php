@@ -3,7 +3,7 @@
 // tte($path);
 
 ob_start();
-require_once('app/action/generatePDF/incomingsGoods/template.php');
+require_once('app/action/generatePDF/outgoingsGoods/template.php');
 $html = ob_get_contents();
 ob_end_clean();
 
@@ -18,11 +18,10 @@ $options->setChroot($path);
 
 $dompdf = new Dompdf($options);
 
-
 $dompdf->loadHtml($html);
 
 $dompdf->render();
 
-$dompdf->stream('Incomings Goods.pdf', ['Attachment'=>'0']);
+$dompdf->stream('Outgoings Goods.pdf', ['Attachment'=>'0']);
 
 ?>

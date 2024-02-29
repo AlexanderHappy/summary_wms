@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>PDF Incomings</title>
+  <title>PDF Outgoings</title>
   
   <style type="text/css">
     body {
@@ -60,7 +60,7 @@
         </p>
       </td>
       <td class="paragraph-cell">
-        <p>Information about Incoming Goods:</p>
+        <p>Information about Outgoing Goods:</p>
       </td>
     </tr>
   </table>
@@ -70,7 +70,7 @@
       <tr>
         <th>#</th>
         <th>Goods</th>
-        <th>Suppliers</th>
+        <th>Customer</th>
         <th class="total">Total</th>
         <th>Date</th>
       </tr>
@@ -84,7 +84,7 @@
             <div>Brand: <?= $data['brand'] ?></div>
           </td>
           <td>
-            <div>Supplier: <?= $data['supplier_name'] ?></div>
+            <div>Customer: <?= $data['customer_name'] ?></div>
             <div>Address: <?= $data['address'] ?></div>
             <div>Phone: <?= $data['telephone'] ?></div>
           </td>
@@ -99,7 +99,7 @@
   </table>
 
   <p>
-    Total amount of Incoming Goods: <span style="color: red;"><?= $pdfData['sum'] ?></span>
+    Total amount of Outgoing Goods: <span style="color: red;"><?= $pdfData['sum'] ?></span>
   </p>
 </body>
 </html>
