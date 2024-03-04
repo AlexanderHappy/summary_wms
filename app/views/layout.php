@@ -112,7 +112,7 @@
                 </a>
               </li>
               <li>
-                <a class="item-link" href="#">
+                <a class="item-link" href="/<?= APP_BASE_PATH ?>/users">
                   <i class="fa fa-angle-right" aria-hidden="true"></i>
                   <span>System Users</span>
                 </a>
@@ -130,9 +130,9 @@
 
     <!-- Sidebar - footer -->
     <div class="sidebar-footer-grid">
-      <a href="#"><i class="fa fa-home" aria-hidden="true"></i></a>
+      <a href="/<?= APP_BASE_PATH ?>"><i class="fa fa-home" aria-hidden="true"></i></a>
       <a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a>
-      <a href="#"><i class="fa fa-power-off" aria-hidden="true"></i></a>
+      <a href="/<?= APP_BASE_PATH ?>/auth/logout"><i class="fa fa-power-off" aria-hidden="true"></i></a>
     </div>
     <!-- Sidebar - footer -->
   </nav>

@@ -2,10 +2,12 @@
 
 namespace app;
 
-class Router 
+class Router
 {
   private $routes = [
     '/^\/' . APP_BASE_PATH . '\/?$/' => ['controller' => 'home\\HomeController', 'action' => 'index'],
+    '/^\/' . APP_BASE_PATH . '\/users(\/(?P<action>[a-z]+)(\/(?P<userId>\d+))?)?$/' => ['controller' => 'users\\UsersController'],
+    '/^\/' . APP_BASE_PATH . '\/auth(\/(?P<action>[a-z]+)?)?$/' => ['controller' => 'auth\\AuthController'],
     '/^\/' . APP_BASE_PATH . '\/goods(\/(?P<action>[a-z]+)(\/(?P<goodId>\d+))?)?$/' => ['controller' => 'goods\\GoodsController'],
     '/^\/' . APP_BASE_PATH . '\/suppliers(\/(?P<action>[a-z]+)(\/(?P<supplierId>\d+))?)?$/' => ['controller' => 'suppliers\\SuppliersController'],
     '/^\/' . APP_BASE_PATH . '\/customers(\/(?P<action>[a-z]+)(\/(?P<customerId>\d+))?)?$/' => ['controller' => 'customers\\CustomersController'],
@@ -18,7 +20,7 @@ class Router
   ];
 
   public function run()
-  {
+  {     
     $uri = $_SERVER['REQUEST_URI'];
     $controller = null;
     $action = null;

@@ -33,6 +33,7 @@ class SuppliersModel
 
     try {
       $this->db->exec($suppliersTableCreateQuery);
+      return true;
     } catch (\PDOException $exp) {
       echo "Something goes wrong: " . $exp->getMessage();
       return false;
