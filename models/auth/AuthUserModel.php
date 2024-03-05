@@ -40,49 +40,19 @@ class AuthUserModel
     }
   }
 
-  public function register($user_name, $email, $password)
+  public function findByEmail($data)
   {
-    $query = 'INSERT INTO `users` (user_name, email, password) VALUES (?, ?, ?)';
+    $email = $data['email'];
+    $password = $data['password'];
+
+    $query = "SELECT user_name, password FROM `users` WHERE email = ?";
 
     try {
-      $stmt = $this->db->prepare($query);
-      $stmt->execute([$user_name, $email, password_hash($password, PASSWORD_DEFAULT)]);
-      return true;
-    } catch (\PDOException $exp) {
-      echo "Something goes wrong: " . $exp->getMessage();
-      return false;
-    }
-  }
-
-  public function login($email, $password)
-  {
-    try {
-      $query = "SELECT * FROM `users WHERE email = ? LIMIT 1";
-
       $stmt = $this->db->prepare($query);
       $stmt->execute([$email]);
-      $user = $stmt->fetch(\PDO::FETCH_ASSOC);
+      $result = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-      if ($user && password_verify($password, $user['password'])) {
-        return $user;
-      }
-
-    } catch (\PDOException $exp) {
-      echo "Something goes wrong: " . $exp->getMessage();
-      return false;
-    }
-  }
-
-  public function findByEmail($email)
-  {
-    try {
-      $query = "SELECT * FROM `users` WHERE email = ? LIMIT 1";
-
-      $stmt = $this->db->prepare($query);
-      $stmt->execute([$email]);
-      $user = $stmt->fetch(\PDO::FETCH_ASSOC);
-
-      return $user ? $user : false;
+      return $result;
     } catch (\PDOException $exp) {
       echo "Something goes wrong: " . $exp->getMessage();
       return false;

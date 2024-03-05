@@ -68,7 +68,7 @@ class GoodsModel
 
       return $goods;
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
@@ -86,7 +86,7 @@ class GoodsModel
       $stmt->execute([$name, $brand, $stock]);
       return true;
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
@@ -101,7 +101,7 @@ class GoodsModel
       $res = $stmt->fetch(\PDO::FETCH_ASSOC);
       return $res;
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
@@ -119,7 +119,7 @@ class GoodsModel
       $stmt->execute([$name, $brand, $stock, $id]);
       return true;
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }
@@ -132,7 +132,7 @@ class GoodsModel
       $stmt = $this->db->prepare($query);
       $stmt->execute([$id]);
     } catch (\PDOException $exp) {
-      echo "Somethin goes wrong: " . $exp->getMessage();
+      echo "Something goes wrong: " . $exp->getMessage();
       return false;
     }
   }

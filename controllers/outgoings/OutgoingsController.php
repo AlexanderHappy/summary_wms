@@ -5,11 +5,21 @@ namespace controllers\outgoings;
 use models\outgoings\OutgoingsModel;
 use models\goods\GoodsModel;
 use models\customers\CustomersModel;
+use app\action\checkAuthorization\CheckAuthorization;
 
 class OutgoingsController
 {
+  private $check;
+
+  public function __construct()
+  {
+    $this->check = new CheckAuthorization();
+  }
+
   public function index()
   {
+    $this->check->checkAuthorization();
+
     $outgoingsModel = new OutgoingsModel();
     $outgoings = $outgoingsModel->readAll();
 
@@ -18,6 +28,8 @@ class OutgoingsController
 
   public function create()
   {
+    $this->check->checkAuthorization();
+
     $goodsModel = new GoodsModel();
     $goods = $goodsModel->readAll();
 
@@ -29,6 +41,8 @@ class OutgoingsController
 
   public function store()
   {
+    $this->check->checkAuthorization();
+    
     if (isset($_POST['good_id']) && isset($_POST['customer_id']) && isset($_POST['total'])) {
       $outgoingsModel = new OutgoingsModel();
       $data = [
@@ -45,6 +59,8 @@ class OutgoingsController
 
   public function edit($params)
   {
+    $this->check->checkAuthorization();
+
     $outgoingsModel = new OutgoingsModel();
     $outgoing = $outgoingsModel->read($params['outgoingId']);
 
@@ -61,6 +77,8 @@ class OutgoingsController
 
   public function update($params) 
   {
+    $this->check->checkAuthorization();
+
     $outgoingsModel = new OutgoingsModel();
     $outgoingsModel->update($params['outgoingId'], $_POST);
 
@@ -70,6 +88,8 @@ class OutgoingsController
 
   public function delete($params)
   {
+    $this->check->checkAuthorization();
+
     $outgoingsModel = new OutgoingsModel();
     $outgoingsModel->delete($params['outgoingId']);
 

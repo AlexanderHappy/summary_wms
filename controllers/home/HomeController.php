@@ -5,16 +5,20 @@ namespace controllers\home;
 use app\action\checkAuthorization\CheckAuthorization;
 
 class HomeController
-{ 
+{
+  private $check;
+
+  public function __construct()
+  {
+    $this->check = new CheckAuthorization();
+  }
+
   public function index()
   {
-    if (empty($_SESSION['login'])) {
-      $checkAuth = new CheckAuthorization();
-      $checkAuth->authorizate();
-      return;
-    }
+    $this->check->checkAuthorization();
     
-    include 'app/views/home/index.php';
+    $path = '/' . APP_BASE_PATH . '/goods';
+    header("Location: $path");
   }
 }
 

@@ -17,9 +17,9 @@
       margin: 0px;
     }
     .container {
-      background-color: white;
+      background-color: rgb(0, 192, 239);
       width: 500px;
-      height: 325px;
+      height: 350px;
       font-family: Rubik, Arial;
       border-radius: 10px;
       box-shadow: 0px 0px 2px rgba(0, 0, 0, .75);
@@ -85,6 +85,11 @@
       cursor: pointer;
       filter: brightness(90%);
     }
+    p.error {
+      color: red;
+      margin-left: 25px;
+      margin-top: 10px;
+    }
   </style>
 </head>
 
@@ -105,6 +110,9 @@
 
           <div class="input-password">
             <input type="password" placeholder="Enter Password" id="password" name="password" required>
+              <?php if(!empty($_SESSION['validation']['errors'])): ?>
+                <p class="error"><?= $_SESSION['validation']['errors'] ?></p>
+              <?php endif; ?>
             <hr>
           </div>
 

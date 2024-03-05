@@ -40,12 +40,6 @@
       <ul class="sidebar-listmenu">
         <li class="main-menu-row">Main-Menu</li>
         <li class="item">
-          <a href="/<?= APP_BASE_PATH ?>/">
-            <i class="fa fa-tachometer" aria-hi class="second-row"dden="true"></i>
-            <span>Dashboard</span>
-          </a>
-        </li>
-        <li class="item">
           <a href="/<?= APP_BASE_PATH ?>/goods">
             <i class="fa fa-archive" aria-hidden="true"></i>
             <span>Master of Goods</span>
@@ -130,8 +124,8 @@
 
     <!-- Sidebar - footer -->
     <div class="sidebar-footer-grid">
-      <a href="/<?= APP_BASE_PATH ?>"><i class="fa fa-home" aria-hidden="true"></i></a>
-      <a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a>
+      <a href="/<?= APP_BASE_PATH ?>/users"><i class="fa fa-home" aria-hidden="true"></i></a>
+      <!-- <a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a> -->
       <a href="/<?= APP_BASE_PATH ?>/auth/logout"><i class="fa fa-power-off" aria-hidden="true"></i></a>
     </div>
     <!-- Sidebar - footer -->

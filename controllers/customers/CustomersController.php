@@ -3,12 +3,22 @@
 namespace controllers\customers;
 
 use models\customers\CustomersModel;
+use app\action\checkAuthorization\CheckAuthorization;
 
 
 class CustomersController
 {
+  private $check;
+
+  public function __construct()
+  {
+    $this->check = new CheckAuthorization();
+  }
+
   public function index()
   {
+    $this->check->checkAuthorization();
+
     $customersModel = new CustomersModel();
     $customers = $customersModel->readAll();
     include 'app/views/customers/index.php';
@@ -16,11 +26,15 @@ class CustomersController
 
   public function create()
   {
+    $this->check->checkAuthorization();
+
     include 'app/views/customers/create.php';
   }
 
   public function store()
   {
+    $this->check->checkAuthorization();
+
     if (isset($_POST['name']) && isset($_POST['address']) && isset($_POST['telephone'])) {
       $customersModel = new CustomersModel();
       $data = [
@@ -37,6 +51,8 @@ class CustomersController
 
   public function edit($params)
   {
+    $this->check->checkAuthorization();
+
     $customersModel = new CustomersModel();
     $customer = $customersModel->read($params['customerId']);
 
@@ -45,6 +61,8 @@ class CustomersController
 
   public function update($params)
   {
+    $this->check->checkAuthorization();
+
     $customersModel = new CustomersModel();
     $customersModel->update($params['customerId'], $_POST);
 
@@ -54,6 +72,8 @@ class CustomersController
 
   public function delete($params)
   {
+    $this->check->checkAuthorization();
+
     $customersModel = new CustomersModel();
     $customersModel->delete($params['customerId']);
 

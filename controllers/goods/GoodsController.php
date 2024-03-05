@@ -3,11 +3,21 @@
 namespace controllers\goods;
 
 use models\goods\GoodsModel;
+use app\action\checkAuthorization\CheckAuthorization;
 
 class GoodsController
 {
+  private $check;
+
+  public function __construct()
+  {
+    $this->check = new CheckAuthorization();
+  }
+
   public function index()
   {
+    $this->check->checkAuthorization();
+
     $goodsModel = new GoodsModel();
     $goods = $goodsModel->readAll();
     include 'app/views/goods/index.php';
@@ -15,11 +25,15 @@ class GoodsController
 
   public function create()
   {
+    $this->check->checkAuthorization();
+
     include 'app/views/goods/create.php';
   }
 
   public function store() 
   {
+    $this->check->checkAuthorization();
+
     if (isset($_POST['name']) && isset($_POST['brand']) && isset($_POST['stock'])) {
       $goodsModel = new GoodsModel();
       $data = [
@@ -36,6 +50,8 @@ class GoodsController
 
   public function edit($params)
   {
+    $this->check->checkAuthorization();
+
     $goodsModel = new GoodsModel();
     $good = $goodsModel->read($params['goodId']);
 
@@ -44,6 +60,8 @@ class GoodsController
 
   public function update($params)
   {
+    $this->check->checkAuthorization();
+
     $goodsModel = new GoodsModel();
     $goodsModel->update($params['goodId'], $_POST);
 
@@ -53,6 +71,8 @@ class GoodsController
 
   public function delete($params)
   {
+    $this->check->checkAuthorization();
+
     $goodsModel = new GoodsModel();
     $goodsModel->delete($params['goodId']);
 

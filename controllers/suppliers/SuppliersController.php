@@ -3,11 +3,21 @@
 namespace controllers\suppliers;
 
 use models\suppliers\SuppliersModel;
+use app\action\checkAuthorization\CheckAuthorization;
 
 class SuppliersController
 {
+  private $check;
+
+  public function __construct()
+  {
+    $this->check = new CheckAuthorization();
+  }
+
   public function index()
   {
+    $this->check->checkAuthorization();
+
     $suppliersModel = new SuppliersModel();
     $suppliers = $suppliersModel->readAll();
     include 'app/views/suppliers/index.php';
@@ -15,11 +25,15 @@ class SuppliersController
 
   public function create()
   {
+    $this->check->checkAuthorization();
+
     include 'app/views/suppliers/create.php';
   }
 
   public function store()
   {
+    $this->check->checkAuthorization();
+
     if (isset($_POST['name']) && isset($_POST['address']) && isset($_POST['telephone'])) {
       $suppliersModel = new SuppliersModel();
       $data = [
@@ -36,6 +50,8 @@ class SuppliersController
 
   public function edit($params)
   {
+    $this->check->checkAuthorization();
+
     $suppliersModel = new SuppliersModel();
     $supplier = $suppliersModel->read($params['supplierId']);
 
@@ -44,6 +60,8 @@ class SuppliersController
 
   public function update($params)
   {
+    $this->check->checkAuthorization();
+
     $suppliersModel = new SuppliersModel();
     $suppliersModel->update($params['supplierId'], $_POST);
 
@@ -53,6 +71,8 @@ class SuppliersController
 
   public function delete($params)
   {
+    $this->check->checkAuthorization();
+
     $suppliersModel = new SuppliersModel();
     $suppliersModel->delete($params['supplierId']);
 

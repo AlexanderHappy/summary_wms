@@ -3,11 +3,21 @@
 namespace controllers\users;
 
 use models\users\UsersModel;
+use app\action\checkAuthorization\CheckAuthorization;
 
 class UsersController
 {
+  private $check;
+
+  public function __construct()
+  {
+    $this->check = new CheckAuthorization();
+  }
+
   public function index()
   {
+    $this->check->checkAuthorization();
+
     $usersModel = new UsersModel();
     $users = $usersModel->readAll();
 
@@ -16,11 +26,15 @@ class UsersController
 
   public function create()
   {
+    $this->check->checkAuthorization();
+
     include 'app/views/users/create.php';
   }
 
   public function store()
   {
+    $this->check->checkAuthorization();
+
     if (isset($_POST['user_name']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password'])) {
       $password = $_POST['password'];
       $confirm_password = $_POST['confirm_password'];
@@ -44,6 +58,8 @@ class UsersController
 
   public function edit($params)
   {
+    $this->check->checkAuthorization();
+
     $usersModel = new UsersModel();
     $user = $usersModel->read($params['userId']);
 
@@ -52,6 +68,8 @@ class UsersController
 
   public function update($params)
   {
+    $this->check->checkAuthorization();
+
     $usersModel = new UsersModel();
     $usersModel->update($params['userId'], $_POST);
 
@@ -61,6 +79,8 @@ class UsersController
 
   public function delete($params)
   {
+    $this->check->checkAuthorization();
+
     $usersModel = new UsersModel();
     $usersModel->delete($params['userId']);
 
